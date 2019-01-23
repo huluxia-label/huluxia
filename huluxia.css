@@ -1,0 +1,151 @@
+@charset "UTF-8";
+/*! minireset.css v0.0.2 | MIT License | github.com/jgthms/minireset.css */
+html,
+body,
+p,
+ol,
+ul,
+li,
+dl,
+dt,
+dd,
+blockquote,
+figure,
+fieldset,
+legend,
+textarea,
+pre,
+iframe,
+hr,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 100%;
+  font-weight: normal;
+}
+
+ul {
+  list-style: none;
+}
+
+button,
+input,
+select,
+textarea {
+  margin: 0;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+* {
+  box-sizing: inherit;
+}
+*:before, *:after {
+  box-sizing: inherit;
+}
+
+img,
+embed,
+object,
+audio,
+video {
+  height: auto;
+  max-width: 100%;
+}
+
+iframe {
+  border: 0;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+td,
+th {
+  padding: 0;
+  text-align: left;
+}
+.clearfix:before,
+.clearfix:after{
+  content: "";
+  display: table;
+  height: 0;
+  clear: both;
+}
+.fl{
+  float: left;
+}
+.fr{
+  float: right;
+}
+/* main */
+#app{
+  width: 980px;
+  margin: 20px auto;
+}
+.app-cats-title{
+  background: #bdc3c7;
+  background: linear-gradient(to right, rgba(166, 177, 189, 0.48), rgba(189, 195, 199, 0.61));
+  color: #fff;
+}
+.app-cats-title span{
+  background: rgb(222, 98, 37);
+  padding: 5px 12px;
+  display: inline-block;
+}
+.app-cats-list{
+  font-size: 0;
+}
+.app-cats-list li{
+  display: inline-block;
+  width: 25%;
+  padding: 10px;
+  margin-top: 4px;
+  font-size: 20px;
+}
+.app-cats-list li a{
+  display: block;
+  box-shadow: rgba(222, 207, 207, 0.1) 1px 1px 1px;
+  height: 78px;
+  text-decoration: none;
+  color: #333;
+  font-size: 12px;
+  border: 1px solid rgb(242, 237, 237);
+  overflow: hidden;
+  padding: 14px 15px;
+  transition: all .3s;
+}
+.app-cats-list li a i{
+  color: red;
+  font-weight: bold;
+  font-style: normal;
+}
+.app-cats-icon{
+  padding-right: 15px;
+}
+.app-cats-icon img{
+  width: 50px;
+}
+.app-cats-name{
+  font-size: 16px;
+}
+.app-cats-list li a:hover{
+  background: rgba(0,0,0,.1);
+}
