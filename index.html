@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,31 +8,175 @@
   <title>Document</title>
   <link rel="stylesheet" href="./huluxia.css">
 </head>
+
 <body>
   <div id="app">
     <div class="app-cats">
-      <p class="app-cats-title"><span>热门论坛🔥</span></p>
-      <ul class="app-cats-list">
-        <li>
-          <a href="#" class="clearfix">
-            <span class="app-cats-icon fl">
-              <img src="http://cdn.u1.huluxia.com/g1/M00/A8/56/wKgBB1aciPyAS1l3AABr2qCenow572.png">
-            </span>
-            <span class="app-cats-name fl">玩机广场</span>
-            <p class="fl">
-            <span class="app-cats-view">🔥 <i>400万</i></span>
-            <span class="app-cats-post">🗣 <i>50万</i></span>
-          </p>
-          </a>
-        </li>
-      </ul>
+      <div id="app-cats"></div>
+      <div id="app-detail"></div>
     </div>
   </div>
+  <div id="up">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 50 50" version="1.1" fill="#000000" width="24" heigt="24">
+      <g id="surface1" fill="#000000">
+        <path style=" " d="M 25 7.21875 L 23.59375 8.65625 L 13.6875 18.53125 C 12.902344 19.316406 12.902344 20.589844 13.6875 21.375 C 14.472656 22.160156 15.746094 22.160156 16.53125 21.375 L 23 14.875 L 23 40 C 22.988281 40.722656 23.367188 41.390625 23.992188 41.753906 C 24.613281 42.121094 25.386719 42.121094 26.007813 41.753906 C 26.632813 41.390625 27.011719 40.722656 27 40 L 27 14.875 L 33.46875 21.375 C 34.253906 22.160156 35.527344 22.160156 36.3125 21.375 C 37.097656 20.589844 37.097656 19.316406 36.3125 18.53125 L 26.40625 8.65625 Z "
+          fill="#000000" />
+      </g>
+    </svg>
+
+  </div>
+  <p class="tc" style="margin: 20px 0;opacity: .2">所有资源都是来自于网络,发生一切纠纷与本人无关,<br>本人初衷只是为了学习,若触犯了您的个人隐私,<br>请马上发邮箱: <strong>chenhonzhou@gmail.com</strong> 给本人,<br>本人会立即进行删除</p>
 </body>
-<script type="text/ractive">
-  
+<script type="text/ractive" id="list">
+  <p class="app-cats-title"><span>🌸 热帖 🌸</span></p>
+  {{#hotPost}}
+  <a href="javascript:void(0)" data-id="{{postID}}" class="hot-post">
+    <div class="clearfix">
+      <div class="fl hot-post-img">
+        <img src="{{images[0]}}" alt="">
+      </div>
+      <div class="fl hot-post-info">
+        <p class="hot-post-title"><i>{{score}}</i>{{title}}</p>
+        <p class="hot-post-desc">{{detail}}</p>
+        <p class="hot-post-view clearfix">
+          <span class="fl">{{user.nick}}</span>
+          <span class="fr hot-post-comment">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" version="1.1" fill="#000000" width="16" height="16">
+              <g id="surface1" fill="#000000">
+                <path style=" " d="M 3 6 L 3 26 L 12.585938 26 L 16 29.414063 L 19.414063 26 L 29 26 L 29 6 Z M 5 8 L 27 8 L 27 24 L 18.585938 24 L 16 26.585938 L 13.414063 24 L 5 24 Z M 9 11 L 9 13 L 23 13 L 23 11 Z M 9 15 L 9 17 L 23 17 L 23 15 Z M 9 19 L 9 21 L 19 21 L 19 19 Z " fill="#000000"/>
+              </g>
+            </svg>
+            {{commentCount}}
+          </span>
+          <span class="fr hot-post-hit">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 32 32" version="1.1" fill="#000000" width="16" height="16">
+              <g id="surface1" fill="#000000">
+                <path style=" " d="M 16 8 C 7.664063 8 1.25 15.34375 1.25 15.34375 L 0.65625 16 L 1.25 16.65625 C 1.25 16.65625 7.097656 23.324219 14.875 23.9375 C 15.246094 23.984375 15.617188 24 16 24 C 16.382813 24 16.753906 23.984375 17.125 23.9375 C 24.902344 23.324219 30.75 16.65625 30.75 16.65625 L 31.34375 16 L 30.75 15.34375 C 30.75 15.34375 24.335938 8 16 8 Z M 16 10 C 18.203125 10 20.234375 10.601563 22 11.40625 C 22.636719 12.460938 23 13.675781 23 15 C 23 18.613281 20.289063 21.582031 16.78125 21.96875 C 16.761719 21.972656 16.738281 21.964844 16.71875 21.96875 C 16.480469 21.980469 16.242188 22 16 22 C 15.734375 22 15.476563 21.984375 15.21875 21.96875 C 11.710938 21.582031 9 18.613281 9 15 C 9 13.695313 9.351563 12.480469 9.96875 11.4375 L 9.9375 11.4375 C 11.71875 10.617188 13.773438 10 16 10 Z M 16 12 C 14.34375 12 13 13.34375 13 15 C 13 16.65625 14.34375 18 16 18 C 17.65625 18 19 16.65625 19 15 C 19 13.34375 17.65625 12 16 12 Z M 7.25 12.9375 C 7.09375 13.609375 7 14.285156 7 15 C 7 16.753906 7.5 18.394531 8.375 19.78125 C 5.855469 18.324219 4.105469 16.585938 3.53125 16 C 4.011719 15.507813 5.351563 14.203125 7.25 12.9375 Z M 24.75 12.9375 C 26.648438 14.203125 27.988281 15.507813 28.46875 16 C 27.894531 16.585938 26.144531 18.324219 23.625 19.78125 C 24.5 18.394531 25 16.753906 25 15 C 25 14.285156 24.90625 13.601563 24.75 12.9375 Z " fill="#000000"/>
+              </g>
+            </svg>
+            {{hit}}
+          </span>
+        </p>
+      </div>
+    </div>
+  </a>
+  {{/hotPost}}
+  <p class="app-cats-title"><span>🌸 全部板块 🌸</span></p>
+  <ul class="app-cats-list">
+    {{#ls}}
+    <li>
+      <a href="javascript:void(0)" class="clearfix" data-id="{{categoryID}}" title="{{description}}" onclick="listView(this)">
+        <span class="app-cats-icon fl">
+          <img src="{{icon}}">
+        </span>
+        <span class="app-cats-name fl">{{title}}</span>
+        <p class="fl">
+        <span class="app-cats-view">🔥 <i>{{viewCountFormated}}</i></span>
+        <span class="app-cats-post">🗣 <i>{{postCountFormated}}</i></span>
+      </p>
+      </a>
+    </li>
+    {{/ls}}
+  </ul>
+</script>
+<script type="text/reactive" id="post-tag">
+  <div class="list-wrap">
+    {{#category}}
+    <div class="post-tag-info por">
+        <img src="{{category.icon}}" alt="">
+        <p class="cat-title"><strong>{{category.title}}</strong> <i>{{category.description}}</i></p>
+        <p class="cat-view"><span>{{category.viewCountFormated}}</span> <i>{{category.postCountFormated}}</i></p>
+    </div>
+    {{/category}}
+    <div class="post-tag-ls">
+      {{#a}}
+        <a href="{{ID}}">{{name}}</a>
+      {{/a}}
+    </div>
+    <div class="clearfix">
+      <div>
+        <ul class="post-push-ls fl">
+          {{#top}}
+            <li class="post-push-top">
+              <a href="javascript:void(0)" data-id="{{postID}}" onclick="postView(this)">
+                <p><i>置顶</i> <i>{{score}}</i> {{title}}</p>
+              </a>
+            </li>
+          {{/top}}
+          <hr/>
+          {{#ls}}
+            <li class="post-push">
+              <a href="javascript:void(0)" data-id="{{postID}}">
+                <p class="pt" onclick="postView($(this).parent('a[data-id]'))"><i class="hit">{{score}}</i>{{title}}</p>
+                <hr/>
+                <pre class="detail">{{detail}}</pre>
+                <ul>
+                  <li>
+                    <img src="{{images[0]}}" class="img-zooming">
+                  </li>
+                </ul>
+                <div class="clearfix info-by">
+                  <div class="fl">
+                    by {{user.nick}}
+                  </div>
+                  <div class="fr">
+                    <span>浏览量: {{hit}}</span>
+                    <span>评论: {{commentCount}}</span>
+                  </div>
+                </div>
+              </a>
+            </li>
+          {{/ls}}
+        </ul>
+        <p class="tc"><a href="javascript:void(0)" class="more-comments">下一页</a></p>
+      </div>
+    </div>
+  </div>
+</script>
+<script type="text/reactive" id="post-detail-temp">
+  <h2 class="post-detail-title">
+    <button class="back" onclick="$('#app-detail').fadeOut();$('#app-cats').fadeIn()">返回</button>
+    <i class="post-detail-tag">{{post.category.title}}</i>
+    {{post.title}}
+  </h2>
+  <hr/>
+  <p class="post-detail-avg">
+    <img src="{{post.user.avatar}}" alt="" />
+    <span>{{post.user.nick}}</span>
+  </p>
+  <hr/>
+  <pre class="post-desc">
+    {{post.detail}}
+  </pre>
+  <p class="imgs">
+  {{#each post.images: num}}
+    <img src="{{post.images[num]}}" alt="" class="img-zooming"/>
+  {{/each}}
+  </p>
+  {{#each comments: index}}
+  <hr/>
+  <p class="post-detail-avg">
+    <img src="{{comments[index].user.avatar}}"  alt=""/>
+    <span>{{comments[index].user.nick}}</span>
+  </p>
+  <hr/>
+  <pre class="post-desc">
+    {{comments[index].text}}
+  </pre>
+  <p class="imgs">
+  {{#each comments[index].images: num}}
+    <img src="{{comments[index].images[num]}}" alt="" class="img-zooming"/>
+  {{/each}}
+  </p>
+  {{/each}}
+  <hr/>
+  <p class="tc">
+    <a href="javascript:void(0)" class="more-comments">加载更多评论</a>
+  </p>
 </script>
 <script src="https://cdn.jsdelivr.net/npm/ractive"></script>
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/zooming/2.1.1/zooming.min.js"></script>
 <script src="test.js"></script>
+
 </html>
