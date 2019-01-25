@@ -1,7 +1,7 @@
 $(() => {
   let url = 'http://0.0.0.0:8000'
   let app = {
-    category: $.ajax({
+    category: e=>{$.ajax({
         url: `${url}/category/list/ANDROID/2.0`,
         success: function(data) {
           let y = data.categories
@@ -16,7 +16,7 @@ $(() => {
             }
           })
         }
-      }),
+      })},
     postList: (id,count,s) => {
       $.ajax({
         url: `${url}/post/list/ANDROID/2.1`,
@@ -34,14 +34,16 @@ $(() => {
         data: {
           'post_id': id,
           'post_size': z,
-          'page_no': p
+          'page_no': p,
+          doc: 1
         },
         success: s
       })
     }
   }
   window.listView = e=>{
-    app.postList($(e).attr('data-id'),20,data=>{
+    window.viewID = e
+    app.postList(e,20,data=>{
         new Ractive({
           target: '#app-cats',
           template: '#post-tag',
@@ -54,10 +56,13 @@ $(() => {
           }
         })
         new Zooming().listen('.img-zooming')
+        window.viewNumber = 0
+        $('html , body').animate({scrollTop: 0},'slow');
     })
   }
   window.postView = e=>{
     app.postDetail($(e).attr('data-id'),20,1,data=>{
+      window.postID = $(e).attr('data-id')
       new Ractive({
         target: '#app-detail',
         template: '#post-detail-temp',
@@ -67,14 +72,34 @@ $(() => {
     })
     $('#app-cats').fadeOut()
     $('#app-detail').fadeIn()
-    $('html , body').animate({scrollTop: 0},'slow');
+    $('html , body').animate({scrollTop: 0},'slow')
   }
   $('#up').fadeOut()
-  $(window).on('scroll',e=>{
-    if(this.scrollTop > 100){
-      $('#up').fadeIn()
-    }else{
-      $('#up').fadeOut()
-    }
+  $(window).scroll(function () {
+        if ($(window).scrollTop() >= 50) {
+            $('#up').fadeIn();
+        }
+        else {
+            $('#up').fadeOut();
+        }
+    });
+  $('#up').on('click',e=>{
+    $('html,body').animate({ scrollTop: 0 }, 500);
   })
+  window.bbsView = ()=>{
+    app.category()
+  }
+  window.commentsView = e=>{
+    window.viewNumber = window.viewNumber || 0
+    viewNumber++
+    $(e).data('page',viewNumber)
+    app.postDetail(postID,20,viewNumber,data=>{
+      let VA = new Ractive({
+        template: '#comments-wrap',
+        data: data
+      })
+      $('#more-com').before(VA.toHTML())
+    })
+  }
+  app.category()
 })
