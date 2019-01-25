@@ -140,6 +140,7 @@ th {
 }
 .app-cats-list li a i{
   color: red;
+  font-size: 10px;
   font-weight: bold;
   font-style: normal;
 }
@@ -220,6 +221,7 @@ a.hot-post{
   left: 40px;
   width: 100px;
   height: 100px;
+  border-radius: 5px;
 }
 .post-tag-info .cat-title{
   padding-top: 20px;
@@ -409,5 +411,17 @@ hr{
   z-index: 2232343;
 }
 #up:hover{
+  cursor: pointer;
+}
+#back{
+  position: fixed;
+  top: 100px;
+  left: 140px;
+  padding-top: 2px;
+  padding: 0 8px;
+  border: 1px solid #333;
+  border-radius: 5px;
+}
+#back:hover{
   cursor: pointer;
 }

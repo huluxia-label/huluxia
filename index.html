@@ -1,3 +1,9 @@
+<!-- by d1y -->
+<!-- 2019/01/23 - 2019/01/25 -->
+<!-- 坐好了,在下要开车了 -->
+<!-- git.io/huluxia -->
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,11 +11,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <title>葫芦侠三楼</title>
   <link rel="stylesheet" href="./huluxia.css">
+  <link href="https://cdn.bootcss.com/github-fork-ribbon-css/0.2.2/gh-fork-ribbon.css" rel="stylesheet">
+  <link rel="icon" href="./favicon.ico">
 </head>
 
 <body>
+  <a class="github-fork-ribbon right-top fixed" target="_blank" href="https://git.io/huluxia" data-ribbon="Fork me on GitHub" title="Fork me on GitHub">Fork me on GitHub</a>
   <div id="app">
     <div class="app-cats">
       <div id="app-cats"></div>
@@ -30,7 +39,7 @@
 <script type="text/ractive" id="list">
   <p class="app-cats-title"><span>🌸 热帖 🌸</span></p>
   {{#hotPost}}
-  <a href="javascript:void(0)" data-id="{{postID}}" class="hot-post">
+  <a href="javascript:void(0)" data-id="{{postID}}" class="hot-post" onclick="postView(this)">
     <div class="clearfix">
       <div class="fl hot-post-img">
         <img src="{{images[0]}}" alt="">
@@ -65,7 +74,7 @@
   <ul class="app-cats-list">
     {{#ls}}
     <li>
-      <a href="javascript:void(0)" class="clearfix" data-id="{{categoryID}}" title="{{description}}" onclick="listView(this)">
+      <a href="javascript:void(0)" class="clearfix" data-id="{{categoryID}}" title="{{description}}" onclick="listView($(this).attr('data-id'))">
         <span class="app-cats-icon fl">
           <img src="{{icon}}">
         </span>
@@ -80,6 +89,13 @@
   </ul>
 </script>
 <script type="text/reactive" id="post-tag">
+  <div id="back" onclick="bbsView()">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 50 50" version="1.1" fill="#000000" width="24" height="24">
+      <g id="surface1" fill="#000000">
+        <path style=" " d="M 11.957031 13.988281 C 11.699219 14.003906 11.457031 14.117188 11.28125 14.308594 L 1.015625 25 L 11.28125 35.691406 C 11.527344 35.953125 11.894531 36.0625 12.242188 35.976563 C 12.589844 35.890625 12.867188 35.625 12.964844 35.28125 C 13.066406 34.933594 12.972656 34.5625 12.71875 34.308594 L 4.746094 26 L 48 26 C 48.359375 26.003906 48.695313 25.816406 48.878906 25.503906 C 49.058594 25.191406 49.058594 24.808594 48.878906 24.496094 C 48.695313 24.183594 48.359375 23.996094 48 24 L 4.746094 24 L 12.71875 15.691406 C 13.011719 15.398438 13.09375 14.957031 12.921875 14.582031 C 12.753906 14.203125 12.371094 13.96875 11.957031 13.988281 Z " fill="#000000"/>
+      </g>
+    </svg>
+  </div>
   <div class="list-wrap">
     {{#category}}
     <div class="post-tag-info por">
@@ -128,7 +144,7 @@
             </li>
           {{/ls}}
         </ul>
-        <p class="tc"><a href="javascript:void(0)" class="more-comments">下一页</a></p>
+        <p class="tc"><a href="javascript:void(0)" class="more-comments" onclick="listView(viewID)">换一批👋</a></p>
       </div>
     </div>
   </div>
@@ -170,9 +186,27 @@
   </p>
   {{/each}}
   <hr/>
-  <p class="tc">
-    <a href="javascript:void(0)" class="more-comments">加载更多评论</a>
+  <p class="tc" id="more-com">
+    <a href="javascript:void(0)" class="more-comments" onclick="commentsView(this)">加载更多评论</a>
   </p>
+</script>
+<script type="text/reactive" id="comments-wrap">
+{{#each comments: index}}
+<hr/>
+<p class="post-detail-avg">
+  <img src="{{comments[index].user.avatar}}"  alt=""/>
+  <span>{{comments[index].user.nick}}</span>
+</p>
+<hr/>
+<pre class="post-desc">
+  {{comments[index].text}}
+</pre>
+<p class="imgs">
+{{#each comments[index].images: num}}
+<img src="{{comments[index].images[num]}}" alt="" class="img-zooming" />
+{{/each}}
+</p>
+{{/each}}
 </script>
 <script src="https://cdn.jsdelivr.net/npm/ractive"></script>
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
