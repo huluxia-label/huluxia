@@ -1,5 +1,6 @@
 $(() => {
-  let url = 'http://0.0.0.0:8000'
+  // let url = 'http://0.0.0.0:8000'
+	let url = 'https://untitled-9xhdhlw40u0u.runkit.sh/huluxia'
   let app = {
     category: e=>{$.ajax({
         url: `${url}/category/list/ANDROID/2.0`,
