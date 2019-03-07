@@ -1,0 +1,14 @@
+{
+	"name": "huluxia-proxy",
+	"alias": [
+		"huluxia",
+		"test-huluxia"
+	],
+	"version": 2,
+	"builds": [
+		{
+			"src": "proxy.js",
+			"use": "@now/node"
+		}
+	]
+}

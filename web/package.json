@@ -1,8 +1,22 @@
 {
   "dependencies": {
+    "babel-preset-es2015": "^6.24.1",
     "express": "^4.16.4",
-    "global": "^4.3.2",
-    "http-proxy-middleware": "^0.19.1",
-    "http-server": "^0.11.1"
-  }
+    "http-proxy-middleware": "^0.19.1"
+  },
+  "name": "web",
+  "version": "1.0.0",
+  "main": "proxy.js",
+  "devDependencies": {},
+  "scripts": {
+    "server": "node proxy.js",
+    "dev": "browser-sync --server --files '**'",
+    "ele": "electron e.js",
+    "es5": "babel www/app.js --out-file www/app-es5.js --presets es2015",
+    "less": "lessc www/style/app.less > www/main.css"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }
