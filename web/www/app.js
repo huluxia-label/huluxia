@@ -76,9 +76,6 @@ let uilt = {
         return document.getElementsByTagName(sele)
       }
     }
-  },
-  tools: (ele, av) => {
-    av.html ? ele.innerHTML = av.html : ele.innerHTML = ''
   }
 };
 (() => {
@@ -100,13 +97,9 @@ let uilt = {
       id: 'app-cats'
     }),
     href = 'javascript:void(0)'
-  // 本地测试api: http://0.0.0.0:8000
-  // 本地测试server需要安装express然后运行
-  // node proxy.js
-  // 反向代理服务器: https://untitled-9xhdhlw40u0u.runkit.sh
-  // api分析见主目录的: API.md
+  // api分析见主目录的: API.md··
   // let api = 'http://0.0.0.0:8000'
-  let api = 'https://untitled-9xhdhlw40u0u.runkit.sh'
+  let api = 'https://untitled-afgzvhaq03mb.runkit.sh/'
   let append = (after, before) => {
       before.forEach(item => {
         after.appendChild(item)
@@ -122,19 +115,6 @@ let uilt = {
         })
       }
     }
-  // {
-  //   let isLoading = makeElement('div',{
-  //       id: 'loading',
-  //       className: 'fixed'
-  //       }),
-  //       div = makeElement('div'),
-  //       isLoadingWrap = makeElement('img',{
-  //         src: 'https://i.loli.net/2019/03/05/5c7e0fc078a98.gif'
-  //       })
-  //   append(div,[isLoadingWrap])
-  //   append(isLoading,[div])
-  //   $('#root').appendChild(isLoading)
-  // }
   function vMoudel(e,status){
     e.classList.remove('none','show')
     if (status) {
@@ -152,12 +132,11 @@ let uilt = {
         `
       return
     } else if (data.status == 1) {
-      // console.log(data);
       (
         () => {
           let aHot = makeElement('a', {
               className: 'hot-post',
-              href: href
+              href: `#/cat/post/${data.postInfo.postID}`
             }),
             divClearfix = makeElement('div', {
               className: 'clearfix'
@@ -175,7 +154,7 @@ let uilt = {
               ]
             }),
             hotPostTitle = makeElement('p', {
-              className: 'hot-post-title'
+              className: ['hot-post-title','overflow']
             }),
             hotPostDesc = makeElement('p', {
               className: 'hot-post-desc',
@@ -238,7 +217,6 @@ let uilt = {
           ])
           aHot.appendChild(divClearfix)
           aHot.setAttribute('data-id', data.postInfo.postID)
-          aHot.onclick = (e) => APPdetail(data.postInfo.postID)
 
           appCatsId.appendChild(aHot)
 
@@ -262,7 +240,8 @@ let uilt = {
              if (element.title == '系统推荐') continue
              let li = makeElement('li'),
                   a = makeElement('a',{
-                    className: 'clearfix'
+                    className: 'clearfix',
+                    href: `#/cat/${element.categoryID}`
                   }),
                   spanIcon = makeElement('span',{
                     className: [
@@ -292,7 +271,6 @@ let uilt = {
                       </span>
                     `
                   spanIcon.innerHTML = `<img src="${element.icon}">`
-                  a.addEventListener('click',()=>plateGo(element.categoryID),false)
                   append(a,[
                     spanIcon,
                     spanName,
@@ -340,6 +318,11 @@ let uilt = {
         button.innerHTML = svg
         button.append(span)
         button.addEventListener('click',()=>{
+          if ($('#app-cats').innerHTML = '') {
+            $('#root').removeChild($('#app'))
+            jsDOM._hotPost()
+          }
+          window.location.hash = '#/'
           vMoudel(document.querySelector('.list-wrap'))
           vMoudel($('#app'),'show')
         })
@@ -374,19 +357,6 @@ let uilt = {
           listWrap.appendChild(postTagInfo)
         }
         {
-          let postTagLs = makeElement('div',{
-            className: 'post-tag-ls'
-          })
-          data.category.tags.forEach(item=>{
-            let a = makeElement('a',{
-              href: href,
-              html: item.name
-            })
-            postTagLs.appendChild(a)
-          })
-          listWrap.appendChild(postTagLs)
-        }
-        {
           let aDiv = makeElement('div'),
               ul = makeElement('ul',{
                 className: 'post-push-ls'
@@ -399,19 +369,29 @@ let uilt = {
                 href: href,
                 html: '换一批👋'
               })
+              a.addEventListener('click',()=>{
+                let w = window.location.hash,
+                    l = w.length,
+                    s = w.search(/[0-9]/)
+                plateGo(w.slice(s,l))
+                scrollTop('0')
+              })
               p.appendChild(a)
           data.weightAndTopPost.forEach(item=>{
             let hotLi = makeElement('li',{
               className: 'post-push-top'
             }), hotA = makeElement('a',{
-              href: href
+              href: `#/cat/post/${item.postID}`
             }); hotA
               .innerHTML = `
-                <p>
+                <p class="overflow">
                   <i>置顶</i> <i>${item.score}</i> ${item.title}
                 </p>
               `
-            hotA.addEventListener('click',()=>APPdetail(item.postID))
+            hotA.addEventListener('click',()=>{
+              sessionStorage.setItem('ListTop',0)
+              vMoudel(document.querySelector('.list-wrap'))
+            })
             hotLi.appendChild(hotA)
             ul.appendChild(hotLi)
           })
@@ -419,21 +399,27 @@ let uilt = {
             let post = makeElement('li',{
               className: 'post-push'
             }), a = makeElement('a',{
-             href: href
+             href: `#/cat/post/${item.postID}`
             })
             function isImages(){
               return item.images[0] ? 0 : null
             }
-            a.innerHTML 
+            let im = ''
+            if (item.images.length > 1) {
+              im = `<img class="img-zooming" src="${item.images[isImages()]}">` 
+            } else if(item.images.length == 1) {
+              im = `<img class="img-zooming" src="${item.images[0]}">`
+            }
+            a.innerHTML
              = `
-                <p class="pt">
+                <p class="pt overflow">
                   <i class="hit">${item.score}</i>${item.title}
                 </p>
                 <hr>
                 <pre class="detail">${item.detail}</pre>
                 <ul>
                   <li>
-                    <img class="img-zooming" src="${item.images[isImages()]}">
+                    ${im}
                   </li>
                 </ul>
                 <div class="clearfix info-by">
@@ -445,7 +431,7 @@ let uilt = {
                 </div>
               `
             a.addEventListener('click',()=>{
-              APPdetail(item.postID)
+              sessionStorage.setItem('ListTop',scrollTop())
               vMoudel(document.querySelector('.list-wrap'))
             })
             post.appendChild(a)
@@ -463,8 +449,10 @@ let uilt = {
       }
     }
   }
-  const APPdetail = id => {
+  const APPdetail = (id,page=1) => {
     vMoudel(document.querySelector('#app'))
+    self.nowPage = page
+    self.nowID = id
     uilt.ajax({
       method: 'get',
       JSON: true,
@@ -472,9 +460,10 @@ let uilt = {
       data: {
         post_id: id,
         post_size: 20,
-        page_no: 1
+        page_no: page
       },
       success: data => {
+        self.totalPage = data.totalPage
         let APP = document.querySelector('#app-detail')
         ? document.querySelector('#app-detail') : makeElement('div',{
          id: 'app-detail'
@@ -505,8 +494,23 @@ let uilt = {
            span
          ])
          button.addEventListener('click',()=>{
+           window.location.hash = `#/cat/${data.categoryID}`
            vMoudel(APP)
-           vMoudel(document.querySelector('.list-wrap'),'show')
+           if (document.querySelector('.list-wrap')){
+            vMoudel(document.querySelector('.list-wrap'),'show')
+           }else {
+            plateGo(data.categoryID)
+           }
+           let tmpTop = parseInt(sessionStorage.getItem('ListTop') || 0),
+           b = 0
+           t = setInterval(() => {
+             if (b >= tmpTop) {
+               clearInterval(t)
+             } else {
+               b += 400
+               scrollTop(b)
+             }
+           }, 40);
          })
          topBar.appendChild(button)
          APP.appendChild(topBar)
@@ -517,10 +521,6 @@ let uilt = {
            html: data.post.title
          }), pp = makeElement('p',{
            className: 'tc'
-         }), aa = makeElement('a',{
-           className: 'more-comments',
-           href: href,
-           html: '加载更多评论👋'
          })
          function gen(args,bl){
            let av = makeElement('p',{
@@ -535,14 +535,30 @@ let uilt = {
                <span>${args.nick}</span>
              `
             d.innerHTML = `
-             <pre class="post-desc">
-             ${args.body}
-             </pre>
+             <pre class="post-desc">${args.body}</pre>
            `
            if (args.images.length) {
              args.images.forEach(item=>{
                let ivg = makeElement('img',{
                  src: item
+               })
+               ivg.addEventListener('click',()=> {
+                 let zoomImg = null
+                 if ($('#zoom')) {
+                  zoomImg = $('#zoom')
+                 } else {
+                  zoomImg = makeElement('div',{
+                    id: 'zoom',
+                    className: 'fixed'
+                  })
+                  document.body.appendChild(zoomImg)
+                 }
+                 zoomImg.innerHTML = ''
+                 zoomImg.appendChild(makeElement('img',{
+                  src: item
+                 }))
+                 vMoudel(zoomImg,'show')
+                 zoomImg.onclick = ()=> vMoudel(zoomImg)
                })
                p.appendChild(ivg)
              })
@@ -573,11 +589,46 @@ let uilt = {
             gen(ob,1)
           } else gen(ob)
          })
-         // 判断是否有更多的评论
-         let isFlag = true
-         if (isFlag) {
+         if (totalPage > 0 && totalPage != 1) {
+          let aa = makeElement('a',{
+            className: 'more-comments',
+            href: href,
+            html: '加载更多评论👋'
+           })
            aa.addEventListener('click',()=>{
-   
+            if (nowPage == totalPage) {
+              pp.removeChild(aa)
+              return
+            }
+            if (totalPage > 1) {
+              if (nowPage == 0) nowPage = 1
+              uilt.ajax({
+                method: 'get',
+                JSON: true,
+                url: `${api}/post/detail/ANDROID/2.1`,
+                data: {
+                  post_id: nowID,
+                  post_size: 20,
+                  page_no: ++nowPage
+                },
+                success: tmp=> {
+                  tmp.comments.forEach(dv=>{
+                    let obj = {
+                      avatar: dv.user.avatar,
+                      nick: dv.user.nick,
+                      body: dv.text,
+                      images: dv.images
+                    }
+                    if (dv.user.nick == data.post.user.nick) {
+                      gen(obj,1)
+                    } else gen(obj)
+                    append(APP,[
+                      pp
+                    ])
+                  })
+                }
+              })
+            }
            })
            pp.appendChild(aa)
            append(APP,[
@@ -589,7 +640,6 @@ let uilt = {
       }
     })
   }
-  // jsDOM._post()
   function plateGo(data) {
       vMoudel($('#app'))
       uilt.ajax({
@@ -606,7 +656,6 @@ let uilt = {
         }
       })
   }
-  document.addEventListener('DOMContentLoaded',()=>jsDOM._hotPost())
   append(appCatsClass, [
     appCatsId
   ])
@@ -620,4 +669,17 @@ let uilt = {
   append($('#root'), [
     appWrap
   ])
+  let R = Router({
+    '/': ()=>jsDOM._hotPost(),
+    '/cat/:id': id=> plateGo(id),
+    '/cat/post/:id': id=> APPdetail(id)
+  })
+  R.init('/')
+  function scrollTop(t){
+    if (t){
+      document.documentElement.scrollTop = parseInt(t)
+    } else {
+      return document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop || 0;
+    }
+  }
 })();

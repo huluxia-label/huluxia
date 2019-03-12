@@ -10,7 +10,7 @@
   "devDependencies": {},
   "scripts": {
     "server": "node proxy.js",
-    "dev": "browser-sync --server --files '**'",
+    "dev": "browser-sync --server --files '**' www/",
     "ele": "electron e.js",
     "es5": "babel www/app.js --out-file www/app-es5.js --presets es2015",
     "less": "lessc www/style/app.less > www/main.css"
