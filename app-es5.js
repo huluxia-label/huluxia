@@ -89,9 +89,6 @@ var uilt = {
         return document.getElementsByTagName(sele);
       }
     }
-  },
-  tools: function tools(ele, av) {
-    av.html ? ele.innerHTML = av.html : ele.innerHTML = '';
   }
 };
 (function () {
@@ -110,13 +107,9 @@ var uilt = {
     id: 'app-cats'
   }),
       href = 'javascript:void(0)';
-  // 本地测试api: http://0.0.0.0:8000
-  // 本地测试server需要安装express然后运行
-  // node proxy.js
-  // 反向代理服务器: https://untitled-9xhdhlw40u0u.runkit.sh
-  // api分析见主目录的: API.md
+  // api分析见主目录的: API.md··
   // let api = 'http://0.0.0.0:8000'
-  var api = 'https://untitled-9xhdhlw40u0u.runkit.sh';
+  var api = 'https://untitled-afgzvhaq03mb.runkit.sh/';
   var append = function append(after, before) {
     before.forEach(function (item) {
       after.appendChild(item);
@@ -133,20 +126,8 @@ var uilt = {
         }
       });
     }
-    // {
-    //   let isLoading = makeElement('div',{
-    //       id: 'loading',
-    //       className: 'fixed'
-    //       }),
-    //       div = makeElement('div'),
-    //       isLoadingWrap = makeElement('img',{
-    //         src: 'https://i.loli.net/2019/03/05/5c7e0fc078a98.gif'
-    //       })
-    //   append(div,[isLoadingWrap])
-    //   append(isLoading,[div])
-    //   $('#root').appendChild(isLoading)
-    // }
-  };function vMoudel(e, status) {
+  };
+  function vMoudel(e, status) {
     e.classList.remove('none', 'show');
     if (status) {
       e.classList.add(status);
@@ -160,11 +141,10 @@ var uilt = {
       $('#root').innerHTML = '\n          \u8BF7\u6C42\u5931\u8D25,\u53EF\u80FD\u662F\u63A5\u53E3\u7684\u95EE\u9898,\u8BF7\u6253\u5F00\u5F00\u53D1\u8005\u6A21\u5F0F\u67E5\u770B\u7F51\u7EDC\u8BF7\u6C42(network)\n        ';
       return;
     } else if (data.status == 1) {
-      // console.log(data);
       (function () {
         var aHot = makeElement('a', {
           className: 'hot-post',
-          href: href
+          href: '#/cat/post/' + data.postInfo.postID
         }),
             divClearfix = makeElement('div', {
           className: 'clearfix'
@@ -176,7 +156,7 @@ var uilt = {
           className: ['fl', 'hot-post-info']
         }),
             hotPostTitle = makeElement('p', {
-          className: 'hot-post-title'
+          className: ['hot-post-title', 'overflow']
         }),
             hotPostDesc = makeElement('p', {
           className: 'hot-post-desc',
@@ -220,9 +200,6 @@ var uilt = {
         append(divClearfix, [fl_, fl__]);
         aHot.appendChild(divClearfix);
         aHot.setAttribute('data-id', data.postInfo.postID);
-        aHot.onclick = function (e) {
-          return APPdetail(data.postInfo.postID);
-        };
 
         appCatsId.appendChild(aHot);
 
@@ -241,13 +218,13 @@ var uilt = {
             className: 'app-cats-list'
           });
           var tmp = data.categories;
-
-          var _loop = function _loop(index) {
+          for (var index = 2; index < tmp.length; index++) {
             var element = tmp[index];
-            if (element.title == '系统推荐') return 'continue';
+            if (element.title == '系统推荐') continue;
             var li = makeElement('li'),
                 a = makeElement('a', {
-              className: 'clearfix'
+              className: 'clearfix',
+              href: '#/cat/' + element.categoryID
             }),
                 spanIcon = makeElement('span', {
               className: ['app-cats-icon', 'fl']
@@ -261,20 +238,11 @@ var uilt = {
             });
             pFl.innerHTML = '\n                      <span class="app-cats-view">\n                        \uD83D\uDD25\n                        <i>' + element.viewCountFormated + '</i>\n                      </span>\n                      <span class="app-cats-post">\n                        \uD83D\uDC4B\n                        <i>' + element.postCountFormated + '</i>\n                      </span>\n                    ';
             spanIcon.innerHTML = '<img src="' + element.icon + '">';
-            a.addEventListener('click', function () {
-              return plateGo(element.categoryID);
-            }, false);
             append(a, [spanIcon, spanName, pFl]);
             a.setAttribute('title', element.description);
             a.setAttribute('data-id', element.categoryID);
             li.appendChild(a);
             ul.appendChild(li);
-          };
-
-          for (var index = 2; index < tmp.length; index++) {
-            var _ret = _loop(index);
-
-            if (_ret === 'continue') continue;
           }
           appCatsId.appendChild(ul);
         }
@@ -302,6 +270,11 @@ var uilt = {
         button.innerHTML = svg;
         button.append(span);
         button.addEventListener('click', function () {
+          if ($('#app-cats').innerHTML = '') {
+            $('#root').removeChild($('#app'));
+            jsDOM._hotPost();
+          }
+          window.location.hash = '#/';
           vMoudel(document.querySelector('.list-wrap'));
           vMoudel($('#app'), 'show');
         });
@@ -322,19 +295,6 @@ var uilt = {
           listWrap.appendChild(postTagInfo);
         }
         {
-          var postTagLs = makeElement('div', {
-            className: 'post-tag-ls'
-          });
-          data.category.tags.forEach(function (item) {
-            var a = makeElement('a', {
-              href: href,
-              html: item.name
-            });
-            postTagLs.appendChild(a);
-          });
-          listWrap.appendChild(postTagLs);
-        }
-        {
           var aDiv = makeElement('div'),
               ul = makeElement('ul', {
             className: 'post-push-ls'
@@ -347,16 +307,24 @@ var uilt = {
             href: href,
             html: '换一批👋'
           });
+          a.addEventListener('click', function () {
+            var w = window.location.hash,
+                l = w.length,
+                s = w.search(/[0-9]/);
+            plateGo(w.slice(s, l));
+            scrollTop('0');
+          });
           p.appendChild(a);
           data.weightAndTopPost.forEach(function (item) {
             var hotLi = makeElement('li', {
               className: 'post-push-top'
             }),
                 hotA = makeElement('a', {
-              href: href
-            });hotA.innerHTML = '\n                <p>\n                  <i>\u7F6E\u9876</i> <i>' + item.score + '</i> ' + item.title + '\n                </p>\n              ';
+              href: '#/cat/post/' + item.postID
+            });hotA.innerHTML = '\n                <p class="overflow">\n                  <i>\u7F6E\u9876</i> <i>' + item.score + '</i> ' + item.title + '\n                </p>\n              ';
             hotA.addEventListener('click', function () {
-              return APPdetail(item.postID);
+              sessionStorage.setItem('ListTop', 0);
+              vMoudel(document.querySelector('.list-wrap'));
             });
             hotLi.appendChild(hotA);
             ul.appendChild(hotLi);
@@ -366,14 +334,20 @@ var uilt = {
               className: 'post-push'
             }),
                 a = makeElement('a', {
-              href: href
+              href: '#/cat/post/' + item.postID
             });
             function isImages() {
               return item.images[0] ? 0 : null;
             }
-            a.innerHTML = '\n                <p class="pt">\n                  <i class="hit">' + item.score + '</i>' + item.title + '\n                </p>\n                <hr>\n                <pre class="detail">' + item.detail + '</pre>\n                <ul>\n                  <li>\n                    <img class="img-zooming" src="' + item.images[isImages()] + '">\n                  </li>\n                </ul>\n                <div class="clearfix info-by">\n                  <div class="fl">' + item.user.nick + '</div>\n                  <div class="fr">\n                    <span>\u6D4F\u89C8\u91CF: ' + item.hit + '</span>\n                    <span>\u8BC4\u8BBA: ' + item.commentCount + '</span>\n                  </div>\n                </div>\n              ';
+            var im = '';
+            if (item.images.length > 1) {
+              im = '<img class="img-zooming" src="' + item.images[isImages()] + '">';
+            } else if (item.images.length == 1) {
+              im = '<img class="img-zooming" src="' + item.images[0] + '">';
+            }
+            a.innerHTML = '\n                <p class="pt overflow">\n                  <i class="hit">' + item.score + '</i>' + item.title + '\n                </p>\n                <hr>\n                <pre class="detail">' + item.detail + '</pre>\n                <ul>\n                  <li>\n                    ' + im + '\n                  </li>\n                </ul>\n                <div class="clearfix info-by">\n                  <div class="fl">' + item.user.nick + '</div>\n                  <div class="fr">\n                    <span>\u6D4F\u89C8\u91CF: ' + item.hit + '</span>\n                    <span>\u8BC4\u8BBA: ' + item.commentCount + '</span>\n                  </div>\n                </div>\n              ';
             a.addEventListener('click', function () {
-              APPdetail(item.postID);
+              sessionStorage.setItem('ListTop', scrollTop());
               vMoudel(document.querySelector('.list-wrap'));
             });
             post.appendChild(a);
@@ -389,7 +363,11 @@ var uilt = {
     }
   };
   var APPdetail = function APPdetail(id) {
+    var page = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+
     vMoudel(document.querySelector('#app'));
+    self.nowPage = page;
+    self.nowID = id;
     uilt.ajax({
       method: 'get',
       JSON: true,
@@ -397,9 +375,10 @@ var uilt = {
       data: {
         post_id: id,
         post_size: 20,
-        page_no: 1
+        page_no: page
       },
       success: function success(data) {
+        self.totalPage = data.totalPage;
         var APP = document.querySelector('#app-detail') ? document.querySelector('#app-detail') : makeElement('div', {
           id: 'app-detail'
         });
@@ -418,8 +397,23 @@ var uilt = {
           button.innerHTML = svg;
           append(button, [span]);
           button.addEventListener('click', function () {
+            window.location.hash = '#/cat/' + data.categoryID;
             vMoudel(APP);
-            vMoudel(document.querySelector('.list-wrap'), 'show');
+            if (document.querySelector('.list-wrap')) {
+              vMoudel(document.querySelector('.list-wrap'), 'show');
+            } else {
+              plateGo(data.categoryID);
+            }
+            var tmpTop = parseInt(sessionStorage.getItem('ListTop') || 0),
+                b = 0;
+            t = setInterval(function () {
+              if (b >= tmpTop) {
+                clearInterval(t);
+              } else {
+                b += 400;
+                scrollTop(b);
+              }
+            }, 40);
           });
           topBar.appendChild(button);
           APP.appendChild(topBar);
@@ -435,11 +429,31 @@ var uilt = {
             });
             bl ? av.classList.add('up') : av.classList.remove('up');
             av.innerHTML = '\n               <img src="' + args.avatar + '">\n               <span>' + args.nick + '</span>\n             ';
-            d.innerHTML = '\n             <pre class="post-desc">\n             ' + args.body + '\n             </pre>\n           ';
+            d.innerHTML = '\n             <pre class="post-desc">' + args.body + '</pre>\n           ';
             if (args.images.length) {
               args.images.forEach(function (item) {
                 var ivg = makeElement('img', {
                   src: item
+                });
+                ivg.addEventListener('click', function () {
+                  var zoomImg = null;
+                  if ($('#zoom')) {
+                    zoomImg = $('#zoom');
+                  } else {
+                    zoomImg = makeElement('div', {
+                      id: 'zoom',
+                      className: 'fixed'
+                    });
+                    document.body.appendChild(zoomImg);
+                  }
+                  zoomImg.innerHTML = '';
+                  zoomImg.appendChild(makeElement('img', {
+                    src: item
+                  }));
+                  vMoudel(zoomImg, 'show');
+                  zoomImg.onclick = function () {
+                    return vMoudel(zoomImg);
+                  };
                 });
                 p.appendChild(ivg);
               });
@@ -454,11 +468,6 @@ var uilt = {
           }),
               pp = makeElement('p', {
             className: 'tc'
-          }),
-              aa = makeElement('a', {
-            className: 'more-comments',
-            href: href,
-            html: '加载更多评论👋'
           });
 
           append(APP, [postDetailTitle]);
@@ -479,10 +488,45 @@ var uilt = {
               gen(ob, 1);
             } else gen(ob);
           });
-          // 判断是否有更多的评论
-          var isFlag = true;
-          if (isFlag) {
-            aa.addEventListener('click', function () {});
+          if (totalPage > 0 && totalPage != 1) {
+            var aa = makeElement('a', {
+              className: 'more-comments',
+              href: href,
+              html: '加载更多评论👋'
+            });
+            aa.addEventListener('click', function () {
+              if (nowPage == totalPage) {
+                pp.removeChild(aa);
+                return;
+              }
+              if (totalPage > 1) {
+                if (nowPage == 0) nowPage = 1;
+                uilt.ajax({
+                  method: 'get',
+                  JSON: true,
+                  url: api + '/post/detail/ANDROID/2.1',
+                  data: {
+                    post_id: nowID,
+                    post_size: 20,
+                    page_no: ++nowPage
+                  },
+                  success: function success(tmp) {
+                    tmp.comments.forEach(function (dv) {
+                      var obj = {
+                        avatar: dv.user.avatar,
+                        nick: dv.user.nick,
+                        body: dv.text,
+                        images: dv.images
+                      };
+                      if (dv.user.nick == data.post.user.nick) {
+                        gen(obj, 1);
+                      } else gen(obj);
+                      append(APP, [pp]);
+                    });
+                  }
+                });
+              }
+            });
             pp.appendChild(aa);
             append(APP, [pp]);
           }
@@ -491,7 +535,6 @@ var uilt = {
       }
     });
   };
-  // jsDOM._post()
   function plateGo(data) {
     vMoudel($('#app'));
     uilt.ajax({
@@ -508,13 +551,29 @@ var uilt = {
       }
     });
   }
-  document.addEventListener('DOMContentLoaded', function () {
-    return jsDOM._hotPost();
-  });
   append(appCatsClass, [appCatsId]);
   append(appWrap, [fixedWrap, appCatsClass]);
   fixedWrap.appendChild(makeElement('p', {
     html: '葫芦侠三楼'
   }));
   append($('#root'), [appWrap]);
+  var R = Router({
+    '/': function _() {
+      return jsDOM._hotPost();
+    },
+    '/cat/:id': function catId(id) {
+      return plateGo(id);
+    },
+    '/cat/post/:id': function catPostId(id) {
+      return APPdetail(id);
+    }
+  });
+  R.init('/');
+  function scrollTop(t) {
+    if (t) {
+      document.documentElement.scrollTop = parseInt(t);
+    } else {
+      return document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop || 0;
+    }
+  }
 })();

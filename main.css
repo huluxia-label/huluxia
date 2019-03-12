@@ -100,6 +100,17 @@ th {
   display: block;
   transition: all 0.2s;
 }
+#zoom {
+  z-index: 234567;
+  background: rgba(0, 0, 0, 0.8);
+  overflow-y: auto;
+}
+#zoom img {
+  display: block;
+  max-width: 100%;
+  max-height: auto;
+  margin: 0 auto;
+}
 .none {
   display: none!important;
 }
@@ -574,6 +585,7 @@ hr {
   width: 10rem;
   padding: 0.3125rem;
   margin: 0.5rem;
+  cursor: zoom-in;
 }
 #app-detail .post-desc {
   font-size: 1rem;
@@ -597,7 +609,7 @@ hr {
   border-radius: 50%;
   vertical-align: middle;
 }
-#app-detail .more-comments {
+.more-comments {
   display: inline-block;
   text-decoration: none;
   color: #fff;
@@ -609,9 +621,9 @@ hr {
   margin: 0.625rem 0 1.25rem;
   border-radius: 0.5rem;
 }
-#app-detail .more-comments:hover {
+.more-comments:hover {
   box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.2);
 }
-#app-detail .pt {
+.pt {
   padding: 0.5rem 0.125rem;
 }
