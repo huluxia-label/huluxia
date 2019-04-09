@@ -1,0 +1,30 @@
+.hotWrap {
+  background:rgba(222, 153, 217, .1)
+}
+.hotWrap2 {
+  width: 180rpx;
+}
+.hot-img {
+  width: 200rpx;
+  height: 200rpx;
+  background: no-repeat 100% center;
+  border-radius: 8rpx;
+}
+.hotScore {
+  padding: 2rpx 4rpx;
+  border-radius: 6rpx;
+  font-size: 24rpx;
+  margin-top: -4rpx;
+  vertical-align: middle;
+}
+.hotBar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+.list-logo {
+  width: 80rpx;
+  height: 80rpx;
+  vertical-align: middle;
+}

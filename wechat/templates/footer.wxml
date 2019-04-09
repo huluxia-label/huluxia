@@ -1,0 +1,39 @@
+<!-- 底部菜单bar -->
+
+    <view class="shadow-lg" style="position: fixed; bottom: 0; width: 100vw">
+        <view class="cu-bar tabbar bg-pink light" role="" aria-label="" style="width: 100vw">
+
+            <navigator class="action" url="/pages/index/index" open-type="redirect">
+                <view class="icon-cu-image" role="" aria-label="">
+                    <!-- https://img.icons8.com/cotton/64/000000/winter-games.png -->
+                    <image src="https://img.icons8.com/pastel-glyph/64/000000/winter-games.png"></image>
+                </view>
+                <view class="text-gray" role="" aria-label="">资源</view>
+            </navigator>
+
+
+            <navigator class="action" url="/pages/forum/index" open-type="redirect">
+                <view class="icon-cu-image" role="" aria-label="">
+                    <!-- https://img.icons8.com/cotton/64/000000/beanie.png -->
+                    <image src="https://img.icons8.com/pastel-glyph/64/000000/beanie--v1.png"></image>
+                </view>
+                <view class="{{ active.menu == 'consult' ? 'text-cyan': 'text-gray' }}" role="" aria-label="">社区</view>
+            </navigator>
+            <navigator class="action" url="" open-type="redirect">
+                <view class="icon-cu-image" role="" aria-label="">
+                    <!-- https://img.icons8.com/ios/50/000000/bat-filled.png -->
+                    <image src="https://img.icons8.com/ios/50/000000/bat.png"></image>
+                </view>
+                <view class="{{ active.menu == 'member' ? 'text-cyan': 'text-gray' }}" role="" aria-label="">发现</view>
+            </navigator>
+
+            <navigator class="action" id="member" url="" open-type="redirect">
+                <view class="icon-cu-image" role="" aria-label="">
+                    <!-- https://img.icons8.com/dusk/50/000000/christmas-stocking.png -->
+                    <image src="https://img.icons8.com/wired/50/000000/christmas-stocking.png"></image>
+                </view>
+                <view class="{{ active.menu == 'member' ? 'text-cyan': 'text-gray' }}" role="" aria-label="">空间</view>
+            </navigator>
+        </view>
+    </view>
+

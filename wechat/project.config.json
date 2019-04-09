@@ -1,0 +1,21 @@
+{
+	"compileType": "miniprogramRoot",
+	"settting": {
+		"es6": "true",
+		"postcss": "true"
+	},
+	"setting": {
+		"urlCheck": true,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"autoAudits": false,
+		"checkInvalidKey": true
+	},
+	"appid": "wx59cd82bb056b762d",
+	"projectname": "huluxia",
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {}
+}

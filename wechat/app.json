@@ -1,0 +1,14 @@
+{
+  "pages": [
+    "pages/forum/index",
+    "pages/index/index"
+  ],
+  "window": {
+    "navigationStyle": "custom"
+  },
+  "sitemapLocation": "sitemap.json",
+  "usingComponents": {
+    "cu-custom": "./colorui/components/cu-custom",
+    "cu-nav": "./components/nav/nav"
+  }
+}
