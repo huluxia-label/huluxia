@@ -9,7 +9,7 @@
   </view>
   <view class="event-wrap">
     <view class="video-wrap shadow-warp">
-      <video src="{{game.coverVideoUrl}}" title="{{game.gameinfo.apptitle}}"
+      <video hidden="{{!game.coverVideoUrl}}" src="{{game.coverVideoUrl}}" title="{{game.gameinfo.apptitle}}"
         poster="{{game.coverVideoThumbnailUrl}}"></video>
     </view>
     <view class="cu-list menu-avatar">

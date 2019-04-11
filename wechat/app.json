@@ -1,9 +1,11 @@
 {
   "pages": [
+    "pages/post_list/index",
+    "pages/post/index",
+    "pages/forum/index",
     "pages/index/index",
     "pages/search_game/index",
     "pages/game_detail/index",
-    "pages/forum/index",
     "pages/home/index",
     "pages/find/index"
   ],

@@ -52,7 +52,7 @@ Page({
           // 论坛列表
           {
             let tmp = data.categories
-            tmp.splice(0,2)
+            tmp.splice(0,3)
             tmp.splice(tmp.length-3,1)
             for (let i=0; i<tmp.length; i++) {
               let b = ranDom()

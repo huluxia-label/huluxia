@@ -1,0 +1,48 @@
+<scroll-view class="content-wrap">
+  <view class="diy-bar bg-gradual-purple">
+    <view class="cu-bar">
+      <view class="action" bindtap="backTo"><text class="icon-back"></text>返回</view>
+      <view class="content">
+        妹子图每日推荐
+      </view>
+    </view>
+  </view> 
+  <view class="event-wrap">
+    <view class="cu-list menu-avatar">
+      <view class="cu-item">
+        <view class="cu-avatar round lg"></view>
+        <view class="content">
+          热度: 20亿 话题: 190万
+        </view>
+      </view>
+    </view>
+    <view class="flex bg-white text-center solid-top solid-bottom">
+      <view class="flex-sub padding solid-right">
+        <text class="icon-evaluate"></text>
+        达人堂
+      </view>
+      <view class="flex-sub padding">
+        <text class="icon-search"></text>
+        搜索
+      </view>
+    </view>
+
+    <view class="margin-top-sm padding-sm bg-white cu-list menu">
+      <view class="solid-bottom cu-item" data-id="{{item.id}}" wx:for="{{upPost}}" wx:for-item="item">
+        <view class="content"><text class="upText">置顶</text>{{item.text}}</view>
+      </view>
+    </view>
+
+    <scroll-view scroll-x="{{true}}" class="bg-gradual-green nav">
+      <block wx:for="{{tabs}}" wx:for-item="item">
+        <view class="cu-item" data-id="{{item.id}}">{{item.text}}</view>
+      </block>
+    </scroll-view>
+    <scroll-view>
+      <block wx:for="{{lists}}">
+        
+      </block>
+    </scroll-view>
+  </view>
+</scroll-view>
+<include src="../../templates/footer.wxml"></include>

@@ -25,9 +25,9 @@
 }
 
 .app-logo {
-  padding: 20rpx;
-  width: 100%;
-  height: 100rpx;
+  padding: 10rpx;
+  width: 80%;
+  height: auto;
 }
 
 .chat-arrow{

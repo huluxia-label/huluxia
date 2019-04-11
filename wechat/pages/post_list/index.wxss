@@ -1,0 +1,13 @@
+.diy-bar {
+  padding-top: 64rpx;
+}
+.event-wrap {
+  margin-top: 30rpx;
+}
+.upText {
+  background: var(--orange);
+  padding: 6rpx 12rpx;
+  color: var(--white);
+  border-radius: 10rpx;
+  margin-right: 6rpx;
+}

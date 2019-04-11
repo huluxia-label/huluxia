@@ -39,7 +39,7 @@
       <view class="flex-sub padding radius shadow-blur bg-{{item.color}}" data-id="{{item.categoryID}}">
         <view class="action">
           <image class="list-logo shadow-lg" src="{{item.icon}}" mode="aspectFit" lazy-load="true"/>
-          <text class="content padding-left"><text class="text-bold">{{item.title}}</text> 热度🔥: {{item.viewCountFormated}} 帖子数🌸: {{item.postCountFormated}}</text>
+          <text class="content padding-left"><text class="text-bold">{{item.title}}</text> 🔥 {{item.viewCountFormated}} 🌸 {{item.postCountFormated}}</text>
         </view>
       </view>
     </view>
