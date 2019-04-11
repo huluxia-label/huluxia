@@ -1,0 +1,13 @@
+<view class="content-wrap">
+  <include src="../../templates/topbar"></include>
+  <view class="padding margin-top text-center">
+    <view class="padding-top margin-top ">
+      <image class="av-img shadow" src="https://i.loli.net/2019/04/03/5ca461c349388.png" mode="aspectFill"></image>
+    </view>
+    <view class="padding">
+      <button class="btn line-purple">点击登录</button>
+    </view>
+  </view>
+</view>
+
+<include src="../../templates/footer.wxml"></include>

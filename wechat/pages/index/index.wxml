@@ -1,38 +1,38 @@
 <view class="content-wrap bg-gray" hover-class="none" hover-stop-propagation="false">
   <block>
-    <view class="diy-bar cu-form-group {{curColor}} padding shadow" hover-class="none" hover-stop-propagation="false">
+    <view bindtap="navTo" class="diy-bar cu-form-group {{curColor}} padding shadow" hover-class="none" hover-stop-propagation="false">
       <view class="title">
         <text class="icon-search"></text>
       </view>
-      <input class="bg-white padding-left radius shadow" style="height:80rpx" placeholder="{{hotSearchKeywords[0]}}" />
+      <input class="bg-white padding-left radius shadow" style="height:80rpx" placeholder="{{hotSearchKeywords.in}}" />
     </view>
   </block>
   <scroll-view class="event-wrap">
     <block>
       <view class="flex margin-top-xs text-center padding-sm">
-        <view class="flex-sub {{colors[0]}} padding-sm margin-xs radius">游戏</view>
-        <view class="flex-sub {{colors[1]}} padding-sm margin-xs radius">资源</view>
-        <view class="flex-sub {{colors[2]}} padding-sm margin-xs radius">精品</view>
-        <view class="flex-sub {{colors[3]}} padding-sm margin-xs radius">影视</view>
+        <block wx:for="{{hotTag}}" wx:for-item="item" wx:for-index="index">
+          <view class="flex-sub {{colors[index]}} padding-sm margin-xs radius" data-id="{{item.tabid}}">{{item.tabname}}</view>
+        </block>
       </view>
     </block>
     <block>
       <view class="cu-list menu-avatar margin-top-xs" hover-class="none" hover-stop-propagation="false">
-        <view class="cu-item solid-bottom" wx:for="{{game}}" wx:form-item="item">
-          <view class="cu-avatar radius lg shadow" style="background: url({{item.logo}})"></view>
+        <view class="cu-item solid-bottom" bindtap="gameDetail" data-id="{{item.appid}}" wx:for="{{game}}" wx:form-item="item">
+          <view class="cu-avatar radius lg shadow-blur solid" style="background-image: url({{item.applogo}});background-size:100%"></view>
           <view class="content">
             <view class="text-pink" hover-class="none" hover-stop-propagation="false">
-              {{item.name}}
+              {{item.apptitle}}
             </view>
             <view class="text-sm text-gray flex" hover-class="none" hover-stop-propagation="false">
-              <view class="flex-sub" hover-class="none" hover-stop-propagation="false"><text class="solid-tag action " selectable="false" space="false" decode="false">{{item.type}}</text></view>
-              <text class="action flex-sub" selectable="false" space="false" decode="false">{{item.size}}</text>
+              <view class="flex-sub" hover-class="none" hover-stop-propagation="false"><text class="solid-tag action " selectable="false" space="false" decode="false">{{item.categoryname}}</text></view>
+              <text class="action flex-sub" selectable="false" space="false" decode="false">{{item.appsize}}MB</text>
               <view class="flex-sub"></view>
             </view>
           </view>
           <button 
               class="cu-btn round line-blue" 
-              data-url="{{item.downUrl}}"
+              data-url="{{item.localurl.url}}"
+              catchtap="downGame"
             >下载</button>
         </view>
       </view>
@@ -40,8 +40,5 @@
   </scroll-view>
 
 </view>
-
-<!-- 引入组件 -->
-<!-- <cu-nav bgColor="#333" content="葫芦侠三楼" text="true"></cu-nav> -->
 
 <include src="../../templates/footer.wxml"></include>

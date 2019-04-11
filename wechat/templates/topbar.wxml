@@ -1,0 +1,6 @@
+<view class="diy-bar bg-green bg-gradual-purple shadow-blur">
+  <view class="padding-sm text-xl" hover-class="none" hover-stop-propagation="false">
+    <text class="icon-titles text-red"></text>
+    葫芦侠三楼
+  </view>
+</view>

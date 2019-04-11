@@ -7,7 +7,7 @@
 .hot-img {
   width: 200rpx;
   height: 200rpx;
-  background: no-repeat 100% center;
+  background: no-repeat cover center;
   border-radius: 8rpx;
 }
 .hotScore {

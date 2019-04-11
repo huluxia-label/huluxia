@@ -1,8 +1,6 @@
 App ({
   globalData: {
-    userInfo: {
-      
-    }
+    gameId: 0
   },
   onLaunch () {
     // 使用自定义控件
@@ -14,5 +12,8 @@ App ({
         this.globalData.CustomBar = custom.bottom + custom.top - e.statusBarHeight;
       }
     })
+  },
+  text(e) {
+    console.log(e)
   }
 })

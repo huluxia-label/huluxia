@@ -9,12 +9,12 @@ app.all('*', function(req, res, next) {
     res.header("Content-Type", "application/json;charset=utf-8");
     next();
 });
-app.use('/v1',proxy({
+app.use('/',proxy({
   target: 'http://floor.huluxia.com',
   changeOrigin: true
 }));
-app.use('/',proxy({
+app.use('/v1',proxy({
 	target: 'http://tools.huluxia.com',
 	changeOrigin: true
 }))
-app.listen(8000);
+app.listen(7000);

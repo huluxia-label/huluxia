@@ -1,7 +1,11 @@
 {
   "pages": [
+    "pages/index/index",
+    "pages/search_game/index",
+    "pages/game_detail/index",
     "pages/forum/index",
-    "pages/index/index"
+    "pages/home/index",
+    "pages/find/index"
   ],
   "window": {
     "navigationStyle": "custom"

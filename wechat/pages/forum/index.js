@@ -1,38 +1,12 @@
-Page ({
+let http = require('../../utils/http')
+Page({
   data: {
-    hot: {
-      score: 10,
-      title: "每日一分享-美图",
-      detail: "测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本",
-      name: "陈某",
-      time: '5分钟前',
-      eyes: 120,
-      common: 80
-    },
-    fList: [
-      {
-        name: '三楼活动',
-        logo: 'http://cdn.u2.huluxia.com/g3/M01/FC/00/wKgBOVuFQ3SADzhKAAAOLa2biTo477.png',
-        id: 30,
-        color: 'blue',
-        hot: '100万',
-        post: '200万'
-      }
-    ]
+    hot: {},
+    fList: [],
+    active: {menu: null}
   },
-  onReady() {
-    let a = this.data.fList
-    for (let i=0; i< 25; i++) {
-      a.push({
-        name: '三楼活动',
-        logo: 'http://cdn.u2.huluxia.com/g3/M01/FC/00/wKgBOVuFQ3SADzhKAAAOLa2biTo477.png',
-        id: 30,
-        color: 'blue',
-        hot: '100万',
-        post: '200万'
-      })
-    }
-    let arr = [
+  onLoad() {
+    let that = this,dd = http.data,arr = [
       'blue',
       'red',
       'orange',
@@ -46,12 +20,50 @@ Page ({
       'brown',
       'black'
     ]
-    const ranDom = ()=> arr[Math.floor(Math.random()*(arr.length-1))]
-    for (let i=0;i<a.length;i++) {
-      a[i].color = ranDom()
+    {
+      that.setData({
+        active: {
+          menu: 'forum'
+        }
+      })
     }
-    this.setData({
-      fList: a
-    })    
+    const ranDom = () => arr[Math.floor(Math.random() * (arr.length - 1))] 
+    {
+      // hot
+      http.Ajax({
+        url: `${http.test}/category/list/ANDROID/2.0`,
+        data: dd,
+        success(data) {
+          // postInfo
+          {
+            let tmp = data.postInfo,e = '' 
+              {
+                let a = new Date(),
+                    b = new Date(tmp.activeTime),
+                    c = a - b,
+                    d = Math.floor(c / 1000 / 60)
+                e = `${d}分钟前`
+              }
+            tmp.activeTime = e
+            that.setData({
+              hot: tmp
+            })
+          }
+          // 论坛列表
+          {
+            let tmp = data.categories
+            tmp.splice(0,2)
+            tmp.splice(tmp.length-3,1)
+            for (let i=0; i<tmp.length; i++) {
+              let b = ranDom()
+              tmp[i].color = b
+            }
+            that.setData({
+              fList: tmp
+            })
+          }
+        }
+      })
+    }
   }
 })

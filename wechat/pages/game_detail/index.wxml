@@ -1,0 +1,127 @@
+<view class="content-wrap">
+  <view class="diy-bar shadow bg-gradual-green">
+    <view class="cu-bar">
+      <view class="action" bindtap="backTo"><text class="icon-back"></text>返回</view>
+      <view class="content">
+        {{game.gameinfo.apptitle}}
+      </view>
+    </view>
+  </view>
+  <view class="event-wrap">
+    <view class="video-wrap shadow-warp">
+      <video src="{{game.coverVideoUrl}}" title="{{game.gameinfo.apptitle}}"
+        poster="{{game.coverVideoThumbnailUrl}}"></video>
+    </view>
+    <view class="cu-list menu-avatar">
+      <view class="cu-item">
+        <view class="cu-avatar radius lg shadow-blur" style="background-image: url({{game.gameinfo.applogo}})"></view>
+        <view class="content flex-sub">
+          <view class="text-bold">{{game.gameinfo.apptitle}}</view>
+          <view class="text-sm text-gray">
+            <text>{{game.gameinfo.appversion}}</text>
+            |
+            <text>{{game.gameinfo.appsize}}</text>
+          </view>
+          <view>
+            <block wx:for="{{game.gameinfo.apptags}}" wx:for-item="item">
+              <text class="app-tags text-orange">{{item}}</text>
+            </block>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="flex text-center bg-cyan light">
+      <view data-open="info" bindtap="checkCard"
+        class="flex-sub text-gray {{status == 'info' ? 'solids-bottom line-green text-green' : ''}} padding">
+        详情</view>
+      <view data-open="comment" bindtap="checkCard"
+        class="flex-sub text-gray {{status == 'comment' ? 'solids-bottom line-green text-green' : ''}} padding">
+        评论</view>
+    </view>
+    <block wx:if="{{status == 'info'}}">
+      <swiper class="card-swiper round-dot bg-pink light" indicator-active-color="orange" indicator-color="#8799a3"
+        indicator-dots="true">
+        <block wx:for="{{game.gameinfo.imageresource}}" wx:for-item="item">
+          <swiper-item class="" item-id="">
+            <view class="swiper-item">
+              <image class="" src="{{item}}" mode="widthFix" />
+            </view>
+          </swiper-item>
+        </block>
+      </swiper>
+
+    </block>
+    <block wx:elif="{{status == 'comment'}}">
+      <view class="cu-card bg-white">
+        <view class="cu-item" wx:for="{{comments}}" wx:for-item="item">
+          <view class="cu-list menu-avatar">
+            <view class="cu-item">
+              <view class="cu-avatar round" style="background-image: url({{item.user.avatar}})"></view>
+              <view class="content flex-sub">
+                <view class="text-orange">{{item.user.nick}}</view>
+              </view>
+            </view>
+          </view>
+          <view class="por text-content text-gray line-orange radius padding-left solid padding">
+            <view class="chat-arrow"></view>
+            {{item.text}}
+          </view>
+        </view>
+      </view>
+    </block>
+
+    <block>
+      <view class="padding solid line-orange margin-sm text-gray" hover-class="none" hover-stop-propagation="false">
+        <view class="flex">
+          <view class="flex-sub">系统: {{game.gameinfo.system}}</view>
+          <view class="flex-sub">语言: {{game.gameinfo.applanguage}}</view>
+        </view>
+        <view class="flex">
+          <view class="flex-sub">作者: {{game.gameinfo.username}}</view>
+          <view class="flex-sub">分类: {{game.gameinfo.categoryname}}</view>
+        </view>
+      </view>
+    </block>
+
+    <block>
+      <view class="padding" hover-class="none" hover-stop-propagation="false">
+        <view class="text-content solid-bottom padding-bottom text-green text-bold padding-left padding-top-sm">
+          <text class="icon-title"></text> {{game.gameinfo.appcrackdesc}}
+        </view>
+        <view bindtap="appOpen" class="text-content text-gray solids-bottom padding-bottom line-green {{appOpen ? '':'more-wrap'}} padding-top">
+          <text class="text-bold">应用介绍</text>
+          <view class="bg-gradual-blue" style="width:3rem;height:6rpx"></view>
+          <text class="padding" selectable="false" space="false" decode="true">
+            {{game.gameinfo.appdesc}}
+          </text>
+        </view>
+      </view>
+    </block>
+
+    <block>
+      <view class="padding-left padding-bottom">
+        <text class="text-bold">相关应用推荐: </text>
+        <view class="bg-gradual-blue" style="width:3rem;height:6rpx"></view>
+      </view>
+      <view class="grid col-4">
+        <block wx:for="{{game.similarList}}" wx:for-item="item">
+          <view class="text-center" data-id="{{item.id}}">
+            <view>
+              <image mode="widthFix" src="{{item.applogo}}" class="app-logo radius"></image>
+            </view>
+            <view class="text-center text-cut">
+              <text>{{item.apptitle}}</text>
+            </view>
+          </view>
+        </block>
+      </view>
+      
+    </block>
+      
+    
+  </view>
+</view>
+
+<view bindtap="downUrl" class="flex flex-direction text-center bg-gradual-green" style="position: fixed; bottom: 0; width: 100vw;height: 6vh">
+  <view class="margin-top-sm lg" data-url="{{game.gameinfo.localurl.url}}">下载({{game.gameinfo.appsize}})</view>
+</view>

@@ -1,0 +1,12 @@
+.av-img {
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 50%;
+  margin-top: 300rpx;
+  border: 1px solid var(--purple);
+}
+.btn {
+  width: 36vw;
+  font-size: 24rpx;
+  background: none;
+}

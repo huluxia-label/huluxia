@@ -1,0 +1,42 @@
+.diy-bar {
+  padding-top: 52rpx;
+}
+
+.event-wrap {
+  margin: 14rpx 0 120rpx;
+}
+
+.video-wrap video {
+  width: 100vw;
+  height: 24vh;
+}
+
+.app-tags {
+  font-size: 20rpx;
+  border: 1px solid orange;
+  padding: 3rpx 6rpx;
+  margin: 0 6rpx;
+  border-radius: 6rpx;
+}
+
+.more-wrap {
+  height: 240rpx;
+  overflow: hidden;
+}
+
+.app-logo {
+  padding: 20rpx;
+  width: 100%;
+  height: 100rpx;
+}
+
+.chat-arrow{
+  position: absolute;
+  top: -46rpx;
+  left: 42rpx;
+  width: 0;
+  height: 0;
+  font-size: 0;
+  border: solid 10px;
+  border-color: transparent transparent var(--orange) transparent;
+}

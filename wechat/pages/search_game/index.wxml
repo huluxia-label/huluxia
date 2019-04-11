@@ -1,0 +1,73 @@
+<view class="content-wrap">
+  <view class="cu-form-group bg-green padding-bottom padding-left diy-bar" hover-class="none"
+    hover-stop-propagation="false">
+    <text class="icon-back title" bindtap="backTo"></text>
+    <input class="diy-in" bindinput="searchInput" bindconfirm="searchEnter" type="text" value="{{valueInit}}" placeholder="要不要搜索一下~" />
+  </view>
+  <view hidden="{{searchStatus}}" hover-class="none" hover-stop-propagation="false">
+
+    <view class="content event-wrap padding-top">
+      <view class="padding-left padding-right" hover-class="none" hover-stop-propagation="false">
+        <text class="icon-titles text-green"></text>
+        <text>热门搜索</text>
+      </view>
+      <view class="grid col-3 text-center">
+        <block wx:for="{{hots.keywodList}}" wx:for-item="item" wx:for-index="index">
+          <view class="padding-left-sm" bindtap="hotKeywords" data-keyword="{{item}}">
+            <view style="border-color: {{hots.colors[index]}}" class="hit text-cut text-sm">{{item}}</view>
+          </view>
+        </block>
+      </view>
+      <view class="cu-list menu">
+        <view class="cu-item">
+          <view class="content">
+            <view class="padding-left padding-right">
+              <text class="icon-titles text-green"></text>
+              <text>搜索历史</text>
+            </view>
+          </view>
+          <view class="action" bindtap="removeHistory">
+            <text class="icon-delete lg text-gray"></text>清空列表
+          </view>
+        </view>
+        <scroll-view>
+          <view class="cu-list menu bg-white margin-sm">
+            <view class="cu-item" data-keyword="{{item}}" bindtap="hotKeywords" wx:for="{{searchHistory}}" wx:for-item="item">
+              <view class="content">
+                <text class="icon-read"></text>
+                <text class="text-gray">{{item}}</text>
+              </view>
+            </view>
+          </view>
+        </scroll-view>
+      </view>
+    </view>
+  </view>
+  <view hidden="{{!searchStatus}}" hover-class="none" hover-stop-propagation="false">
+    <scroll-view class="event-wrap">
+      <block>
+        <view class="cu-list menu-avatar margin-top-xs" hover-class="none" hover-stop-propagation="false">
+          <view class="cu-item solid-bottom" bindtap="gameDetail" data-id="{{item.appid}}" wx:for="{{game}}"
+            wx:form-item="item">
+            <view class="cu-avatar radius lg shadow-blur solid"
+              style="background-image: url({{item.applogo}});background-size:100%"></view>
+            <view class="content">
+              <view class="text-pink" hover-class="none" hover-stop-propagation="false">
+                {{item.apptitle}}
+              </view>
+              <view class="text-sm text-gray flex" hover-class="none" hover-stop-propagation="false">
+                <view class="flex-sub" hover-class="none" hover-stop-propagation="false"><text class="solid-tag action "
+                    selectable="false" space="false" decode="false">{{item.categoryname}}</text></view>
+                <text class="action flex-sub" selectable="false" space="false" decode="false">{{item.appsize}}MB</text>
+                <view class="flex-sub"></view>
+              </view>
+            </view>
+            <button class="cu-btn round line-blue" data-url="{{item.localurl.url}}" catchtap="downGame">下载</button>
+          </view>
+        </view>
+      </block>
+    </scroll-view>
+  </view>
+</view>
+
+<include src="../../templates/footer"></include>
