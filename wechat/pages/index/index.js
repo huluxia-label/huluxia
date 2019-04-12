@@ -21,8 +21,7 @@ Page ({
     }
   },
   onLoad() {
-    let that = this,
-        dd = http.data
+    let that = this
     {
       // bar显示
       that.setData({
@@ -35,7 +34,6 @@ Page ({
       // 搜索框hot
       http.Ajax({
         url: `${http.dev}/search/suggest/ANDROID/3.6`,
-        data: dd,
         success(data) {
           that.setData({
             hotSearchKeywords: {
@@ -49,7 +47,6 @@ Page ({
       // 标签
       http.Ajax({
         url: `${http.dev}/game/navigator/ANDROID/3.7`,
-        data: dd,
         success(data) {
           that.setData({
             hotTag: data.btnlist
@@ -61,7 +58,6 @@ Page ({
       // 游戏推荐
       http.Ajax({
         url: `${http.dev}/bbs/recommend/ANDROID/3.6`,
-        data: dd,
         success(data) {
           that.setData({
             game: data.gameapps

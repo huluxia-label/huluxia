@@ -11,7 +11,6 @@ Page({
     let that = this
     http.Ajax({
       url: `${http.dev}/search/recommend/list/ANDROID/3.6`,
-      data: http.data,
       success(data) {
         that.setData({
           hots: data
@@ -38,19 +37,24 @@ Page({
   searchEnter(e) {
     let local = wx.getStorageSync('search_history') || [],
         that = this
-    local.unshift(that.data.valueInit)
     that.setData({
       valueInit: e.detail.value,
       searchHistory: local,
       searchStatus: true
     })
+    for (let i=0; i<local.length; i++) {
+      if (local[i] == that.data.valueInit) {
+        local.splice(i,1)
+      }
+    }
+    local.unshift(that.data.valueInit)
     wx.setStorageSync('search_history',local)
     // ajax
-    let data = http.data
-    data.keyword = e.detail.value
     http.Ajax({
       url: `http://search.huluxia.com/game/search/ANDROID/1.1`,
-      data: data,
+      data: {
+        keyword: e.detail.value
+      },
       success(data) {
         that.setData({
           game: data.gameapps

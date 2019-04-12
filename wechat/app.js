@@ -1,6 +1,8 @@
 App ({
   globalData: {
-    gameId: 0
+    gameId: 0,
+    forumId: 43,
+    globalImg: ''
   },
   onLaunch () {
     // 使用自定义控件
@@ -13,7 +15,16 @@ App ({
       }
     })
   },
-  text(e) {
-    console.log(e)
+  goTo (e) {
+    wx.navigateTo({
+      url: `./pages/${e}`
+    });
+  },
+  backTo (num) {
+    num ? wx.navigateBack({
+      delta: num
+    }) :  wx.navigateBack({
+      delta: 1
+    });
   }
 })

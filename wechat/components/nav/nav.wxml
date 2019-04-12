@@ -1,6 +1,0 @@
-<view class="" hover-class="none" hover-stop-propagation="false">
-  <cu-custom bgColor="{{bgColor}}" isBack="{{isBack}}" isCustom="{{isCustom}}">
-    <view slot="backText" hidden="{{text}}">{{backText}}</view>
-    <view slot="content">{{content}}</view>
-  </cu-custom>
-</view>

@@ -1,46 +1,39 @@
-Page ({
+let app = getApp(),
+  http = require('../../utils/http'),
+  utils = require('../../utils/format')
+Page({
   data: {
-    upPost: [
-      {
-        text: '测试文字测试文字测试文字测试文字',
-        id: 111
-      }
-    ],
-    tabs: [
-      {
-        text: '全部',
-        id: 11
-      },
-      {
-        text: '绿色软件',
-        id: 4
-      },
-      {
-        text: '原创工具',
-        id: 5
-      },
-      {
-        text: '人才',
-        id: 666
-      }
-    ],
-    lists: [
-      {
-        
-      }
-    ]
+    data: null
   },
   onLoad() {
-    let that = this,
-        data = that.data.upPost
-    for (let i=0; i<5; i++) {
-      data.push({
-        text: 'eyes',
-        id: 222
-      }) 
-    }
-    that.setData({
-      upPost: data 
+    let that = this
+    http.Ajax({
+      url: `${http.test}/post/list/ANDROID/2.1`,
+      data: {
+        cat_id: app.globalData.forumId
+      },
+      success(data) {
+        data.category.description = '\n' + data.category.description
+        for (let i = 0; i < data.posts.length; i++) {
+          let tmp = data.posts[i].activeTime,
+            tmp2 = utils.time(tmp)
+          data.posts[i].activeTime = tmp2
+        }
+        that.setData({
+          data: data
+        })
+      }
+    })
+  },
+  backTo() {
+    wx.navigateBack({
+      delta: 1
+    });
+  },
+  zoomIMG(e) {
+    this.setData({
+      imgURL: e.currentTarget.dataset.img,
+      imgStatus: true
     })
   }
 })

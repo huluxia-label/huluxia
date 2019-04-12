@@ -43,7 +43,7 @@
         indicator-dots="true">
         <block wx:for="{{game.gameinfo.imageresource}}" wx:for-item="item">
           <swiper-item class="" item-id="">
-            <view class="swiper-item">
+            <view data-img="{{item}}" bindtap="zoomIMG" class="swiper-item">
               <image class="" src="{{item}}" mode="widthFix" />
             </view>
           </swiper-item>
@@ -125,3 +125,5 @@
 <view bindtap="downUrl" class="flex flex-direction text-center bg-gradual-green" style="position: fixed; bottom: 0; width: 100vw;height: 6vh">
   <view class="margin-top-sm lg" data-url="{{game.gameinfo.localurl.url}}">下载({{game.gameinfo.appsize}})</view>
 </view>
+
+<zoom-wrap url="{{imgURL}}" event="{{imgStatus}}"></zoom-wrap>

@@ -1,4 +1,5 @@
-let http = require('../../utils/http')
+let http = require('../../utils/http'),
+    app = getApp()
 Page({
   data: {
     hot: {},
@@ -65,5 +66,17 @@ Page({
         }
       })
     }
+  },
+  tapID(e) {
+    app.globalData.forumId = e.currentTarget.dataset.id
+    wx.navigateTo({
+      url: '../post_list/index'
+    });
+  },
+  zoomIMG(e) {
+    this.setData({
+      imgURL: e.currentTarget.dataset.img,
+      imgStatus: true
+    })
   }
 })

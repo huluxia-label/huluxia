@@ -1,26 +1,30 @@
 let http = require('../../utils/http')
-let app =  getApp();
+let app = getApp();
 Page({
   data: {
     game: {},
     status: 'info',
     comments: [],
-    appdescOpen: false
+    appdescOpen: false,
+    imgStatus: false,
+    imgURL: 'https://i.loli.net/2019/04/03/5ca461c349388.png'
   },
   onLoad() {
-    let dd = http.data,that = this
-    dd.app_id = app.globalData.gameId
-    let tmp = dd, url = `${http.dev}/game/detail/ANDROID/3.6`
-    tmp.start = 0
-    tmp.count = 20
+    let that = this,
+      url = `${http.dev}/game/detail/ANDROID/3.6`,
+      data = {
+        app_id: app.globalData.gameId,
+        start: 0,
+        count: 20
+      }
     http.Ajax({
       url: url,
-      data: dd,
+      data: data,
       success(data) {
         data.gameinfo.apptags = data.gameinfo.apptags.split(',')
-        data.gameinfo.appdesc = data.gameinfo.appdesc.replace(/<br \/>/g,'\n')
+        data.gameinfo.appdesc = data.gameinfo.appdesc.replace(/<br \/>/g, '\n')
         data.gameinfo.appsize = data.gameinfo.appsize + 'MB'
-        data.gameinfo.appcrackdesc = data.gameinfo.appcrackdesc.replace(/<br \/>/g,'\n')
+        data.gameinfo.appcrackdesc = data.gameinfo.appcrackdesc.replace(/<br \/>/g, '\n')
         that.setData({
           game: data
         })
@@ -28,9 +32,8 @@ Page({
     })
     http.Ajax({
       url: `${http.dev}/game/comment/good/list/ANDROID/3.6`,
-      data: tmp,
+      data: data,
       success(data) {
-        console.log(data)
         that.setData({
           comments: data.comments
         })
@@ -54,5 +57,12 @@ Page({
     wx.setClipboardData({
       data: e.target.dataset.url
     })
-  }
+  },
+  // zoomIMG(e) {
+  //   console.log('type in message')
+  //   // this.setData({
+  //   //   imgURL: e.currentTarget.dataset.img,
+  //   //   imgStatus: true
+  //   // })
+  // }
 })

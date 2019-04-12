@@ -1,0 +1,6 @@
+<view bindtap="onOpen" hidden="{{!event}}" class="db" hover-class="none" hover-stop-propagation="false">
+  <view class="dtc" hover-class="none" hover-stop-propagation="false">
+    <image src="{{url}}" mode="widthFix" lazy-load="true" binderror="" bindload="" />
+  </view>
+  <view class="bg" style="background-image:url({{url}})"></view>
+</view>

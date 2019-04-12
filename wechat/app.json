@@ -1,9 +1,9 @@
 {
   "pages": [
+    "pages/index/index",
+    "pages/forum/index",
     "pages/post_list/index",
     "pages/post/index",
-    "pages/forum/index",
-    "pages/index/index",
     "pages/search_game/index",
     "pages/game_detail/index",
     "pages/home/index",
@@ -14,7 +14,6 @@
   },
   "sitemapLocation": "sitemap.json",
   "usingComponents": {
-    "cu-custom": "./colorui/components/cu-custom",
-    "cu-nav": "./components/nav/nav"
+    "zoom-wrap": "./components/zoom/index"
   }
 }

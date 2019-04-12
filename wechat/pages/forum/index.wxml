@@ -3,7 +3,7 @@
   <scroll-view class="event-wrap">
     <view class="padding-sm flex hotWrap" hover-class="none" hover-stop-propagation="false">
       <view class="flex-sub bg-orange">
-        <view class="hot-img radius lg shadow-blur"
+        <view data-img="{{hot.images.length >= 1 ? hot.images[0] : ''}}" catchtap="zoomIMG" class="hot-img radius lg shadow-blur"
           style="background-image: url('{{hot.images.length >= 1 ? hot.images[0] : ''}}')">
         </view>
       </view>
@@ -36,7 +36,7 @@
       </view>
     </view>
     <view class="flex padding-left padding-right padding-top" wx:for="{{fList}}" wx:for-item="item">
-      <view class="flex-sub padding radius shadow-blur bg-{{item.color}}" data-id="{{item.categoryID}}">
+      <view bindtap="tapID" class="flex-sub padding radius shadow-blur bg-{{item.color}}" data-id="{{item.categoryID}}">
         <view class="action">
           <image class="list-logo shadow-lg" src="{{item.icon}}" mode="aspectFit" lazy-load="true"/>
           <text class="content padding-left"><text class="text-bold">{{item.title}}</text> 🔥 {{item.viewCountFormated}} 🌸 {{item.postCountFormated}}</text>
@@ -48,3 +48,4 @@
 
 <!-- 引入组件 -->
 <include src="../../templates/footer.wxml"></include>
+<zoom-wrap url="{{imgURL}}" event="{{imgStatus}}"></zoom-wrap>
