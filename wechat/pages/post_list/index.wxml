@@ -53,13 +53,13 @@
           </view>
           <view class="flex por" hidden="{{!(item.images.length >= 1)}}">
             <block wx:if="{{item.images.length >= 3}}">
-              <view class="flex-sub" bindtap="zoomIMG" data-img="{{item.images[ev]}}" wx:for="{{[0,1,2]}}" wx:for-item="ev">
-                <image class="v-img" src="{{item.images[ev]}}" mode="widthFix"></image>
+              <view class="flex-sub"   wx:for="{{[0,1,2]}}" wx:for-item="ev">
+                <image class="v-img" bindtap="zoom" data-img="{{item.images[ev]}}" src="{{item.images[ev]}}" mode="widthFix"></image>
               </view>
             </block>
             <block wx:else>
-              <view class="flex-sub" bindtap="zoomIMG" data-img="{{item.images[0]}}" src="{{item.images[0]}}">
-                <image class="v-img" mode="widthFix"></image>
+              <view class="flex-sub"  src="{{item.images[0]}}">
+                <image class="v-img" bindtap="zoom" data-img="{{item.images[0]}}" mode="widthFix"></image>
               </view>
             </block>
             <text class="img-length">{{item.images.length}}</text>
@@ -79,4 +79,4 @@
   </view>
 </scroll-view>
 <include src="../../templates/footer.wxml"></include>
-<zoom-wrap src="{{imgURL}}" event="{{imgStatus}}"></zoom-wrap>
+<zoom-wrap url="{{imgURL}}" event="{{imgStatus}}"></zoom-wrap>

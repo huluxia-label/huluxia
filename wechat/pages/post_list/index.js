@@ -3,7 +3,9 @@ let app = getApp(),
   utils = require('../../utils/format')
 Page({
   data: {
-    data: null
+    data: null,
+    imgURL: 'http://cdn.u1.huluxia.com/g3/M01/B3/2A/wKgBOVyxkA-ATfZBAAC0c1N9dHU037.jpg',
+    imgStatus: false
   },
   onLoad() {
     let that = this
@@ -30,7 +32,7 @@ Page({
       delta: 1
     });
   },
-  zoomIMG(e) {
+  zoom(e) {
     this.setData({
       imgURL: e.currentTarget.dataset.img,
       imgStatus: true
