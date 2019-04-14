@@ -1,5 +1,5 @@
 <scroll-view class="content-wrap">
-  <view class="diy-bar bg-gradual-purple">
+  <view class="diy-bar sm bg-gradual-purple">
     <view class="cu-bar">
       <view class="action" bindtap="backTo"><text class="icon-back"></text>返回</view>
       <view class="content">
@@ -7,7 +7,7 @@
       </view>
     </view>
   </view>
-  <view class="event-wrap">
+  <view class="event-wrap sm">
     <view class="cu-list menu-avatar">
       <view class="cu-item">
         <view class="cu-avatar round lg" style="background-image: url('{{data.category.icon}}')"></view>
@@ -29,7 +29,7 @@
     </view>
 
     <view class="margin-top-sm padding-sm bg-white cu-list menu">
-      <view class="solid-bottom cu-item" data-id="{{item.postID}}" wx:for="{{data.weightAndTopPost}}" wx:for-item="item">
+      <view class="solid-bottom cu-item" data-id="{{item.postID}}" bindtap="postInfo" wx:for="{{data.weightAndTopPost}}" wx:for-item="item">
         <view class="content text-cut"><text class="upText">置顶</text>{{item.title}}</view>
       </view>
     </view>
@@ -41,7 +41,7 @@
     </scroll-view>
     <scroll-view class="padding-sm">
       <block wx:for="{{data.posts}}" wx:for-item="item">
-        <view class="margin-top-xs solid-bottom padding-bottom" hover-class="none" hover-stop-propagation="false">
+        <view data-id="{{item.postID}}" bindtap="postInfo" class="margin-top-xs solid-bottom padding-bottom"  hover-class="none" hover-stop-propagation="false">
           <view class="item-title text-lg">
             <text class="radius bg-red padding-left-xs padding-right-xs text-sm">+{{item.score}}</text>
             {{item.title}}
@@ -54,12 +54,12 @@
           <view class="flex por" hidden="{{!(item.images.length >= 1)}}">
             <block wx:if="{{item.images.length >= 3}}">
               <view class="flex-sub"   wx:for="{{[0,1,2]}}" wx:for-item="ev">
-                <image class="v-img" bindtap="zoom" data-img="{{item.images[ev]}}" src="{{item.images[ev]}}" mode="widthFix"></image>
+                <image class="v-img" catchtap="zoom" data-img="{{item.images[ev]}}" src="{{item.images[ev]}}" mode="widthFix"></image>
               </view>
             </block>
             <block wx:else>
               <view class="flex-sub"  src="{{item.images[0]}}">
-                <image class="v-img" bindtap="zoom" data-img="{{item.images[0]}}" mode="widthFix"></image>
+                <image class="v-img" catchtap="zoom" data-img="{{item.images[0]}}" mode="widthFix"></image>
               </view>
             </block>
             <text class="img-length">{{item.images.length}}</text>

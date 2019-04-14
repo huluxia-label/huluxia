@@ -1,5 +1,5 @@
 <view class="content-wrap">
-  <view class="diy-bar shadow bg-gradual-green">
+  <view class="diy-bar shadow bg-gradual-green sm">
     <view class="cu-bar">
       <view class="action" bindtap="backTo"><text class="icon-back"></text>返回</view>
       <view class="content">
@@ -7,7 +7,7 @@
       </view>
     </view>
   </view>
-  <view class="event-wrap">
+  <view class="event-wrap sm">
     <view class="video-wrap shadow-warp">
       <video hidden="{{!game.coverVideoUrl}}" src="{{game.coverVideoUrl}}" title="{{game.gameinfo.apptitle}}"
         poster="{{game.coverVideoThumbnailUrl}}"></video>

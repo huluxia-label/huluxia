@@ -12,14 +12,6 @@
   padding: 140rpx 0;
   box-sizing: border-box;
 }
-.diy-bar {
-  position: fixed;
-  top: 0;
-  left:0;
-  padding-top: 160rpx;
-  width: 100vw;
-  z-index: 2333;
-}
 .event-wrap {
   margin: 120rpx 0;
 }
@@ -38,4 +30,18 @@
   bottom: 0;
   left: 0;
   width: 100vw;
+}
+.diy-bar {
+  position: fixed;
+  top: 0;
+  left:0;
+  padding-top: 160rpx;
+  width: 100vw;
+  z-index: 2333;
+}
+.diy-bar.sm {
+  padding-top: 52rpx;
+}
+.event-wrap.sm {
+  margin: 14rpx 0 120rpx;
 }

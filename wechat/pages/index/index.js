@@ -1,5 +1,6 @@
 let http = require('../../utils/http'),
-    app =  getApp()
+    app =  getApp(),
+    ran = ()=> Math.floor(Math.random()*6)
 Page ({
   data: {
     hotSearchKeywords: {
@@ -89,5 +90,15 @@ Page ({
       complete: () => {}
     });
       
+  },
+  onShow() {
+    this.setData({
+      curColor: this.data.colors[ran()]
+    })
+  },
+  onHide() {
+    this.setData({
+      curColor: this.data.colors[ran()]
+    })
   }
 })

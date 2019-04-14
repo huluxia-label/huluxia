@@ -2,7 +2,7 @@ App ({
   globalData: {
     gameId: 0,
     forumId: 43,
-    globalImg: ''
+    postId: 0
   },
   onLaunch () {
     // 使用自定义控件

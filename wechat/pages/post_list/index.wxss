@@ -1,9 +1,3 @@
-.diy-bar {
-  padding-top: 64rpx;
-}
-.event-wrap {
-  margin-top: 30rpx;
-}
 .upText {
   background: var(--orange);
   padding: 6rpx 12rpx;
