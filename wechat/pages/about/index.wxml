@@ -1,0 +1,16 @@
+<view class="content-wrap">
+  <view class="diy-bar sm">
+    <view class="cu-bar">
+      <view class="action text-white" bindtap="backTo"><text class="icon-back"></text>返回</view>
+    </view>
+  </view>
+  <view class="flex text-center event">
+    <view class="flex-sub padding-top-xl">
+      <text class="margin-bottom cu-avatar lg round" style="background-image:url({{src}})"></text>
+      <text class="text-white text-lg" selectable="false" space="false" decode="false">
+        {{text}}
+      </text>
+    </view>
+    
+  </view>
+</view>

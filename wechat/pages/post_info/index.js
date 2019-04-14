@@ -66,9 +66,7 @@ Page ({
             tmp1 = tmp.concat(data.comments)
         console.log(tmp1)    
         that.setData({
-          data: {
-            comments: tmp1
-          }
+          'data.comments': tmp1
         })
       }
     })

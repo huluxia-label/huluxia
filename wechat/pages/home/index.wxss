@@ -1,12 +1,7 @@
-.av-img {
-  width: 140rpx;
-  height: 140rpx;
-  border-radius: 50%;
-  margin-top: 300rpx;
-  border: 1px solid var(--purple);
+.list-top {
+  padding-top: 160rpx;
 }
-.btn {
-  width: 36vw;
-  font-size: 24rpx;
-  background: none;
+.cu-avatar {
+  background: transparent;
+  background-size: 100%;
 }

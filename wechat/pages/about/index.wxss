@@ -1,0 +1,6 @@
+Page {
+  background: var(--gradualBlue)
+}
+.event {
+  padding-top: 200rpx;
+}

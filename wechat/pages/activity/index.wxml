@@ -1,0 +1,23 @@
+<view class="content-wrap">
+  <include src="../../templates/topbar.wxml"></include>
+  <view class="event-wrap">
+    <view class="" hover-class="none" hover-stop-propagation="false">
+      <block wx:for="{{data}}" wx:for-item="item">
+        <view class="cu-card case" data-url="{{item.jump_mode}}" bindtap="webview">
+          <view class="cu-item">
+            <view class="image">
+              <image src="{{item.picture_url}}" alt="" mode="widthFix"></image>
+              <view class="cu-bar bg-shadeBottom">
+                <text class="text-cut">{{item.title}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="content padding-left padding-right text-cut">
+          <text>{{item.synopsis}}</text>
+        </view>
+      </block>
+    </view>
+  </view>
+</view>
+<include src="../../templates/footer.wxml"></include>

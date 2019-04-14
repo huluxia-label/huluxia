@@ -1,0 +1,15 @@
+<view class="content-wrap">
+  <include src="../../templates/topbar.wxml"></include>
+  <view class="event-wrap">
+    <view class="grid col-3 margin-bottom text-center">
+      <view data-img="{{item.imgurl}}" class="bg-white padding" bindtap="zoom" wx:for="{{data}}" wx:for-item="item">
+        <image class="" src="{{item.imgurl}}" mode="widthFix" lazy-load="true"/>
+        <view class="" hover-class="none" hover-stop-propagation="false">
+          {{item.title}}
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<zoom-wrap url="{{imgURL}}" event="{{imgStatus}}"></zoom-wrap>
+<include src="../../templates/footer.wxml"></include>

@@ -3,4 +3,7 @@
     <image src="{{url}}" mode="widthFix" lazy-load="true" binderror="" bindload="" />
   </view>
   <view class="bg" style="background-image:url({{url}})"></view>
+  <view class="down">
+    <button bindtap="down">下载图片</button>
+  </view>
 </view>

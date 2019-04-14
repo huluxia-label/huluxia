@@ -17,12 +17,6 @@
             </view>
             <view class="{{ active.menu == 'forum' ?'text-blue' : 'text-gray'}}" role="" aria-label="">社区</view>
         </navigator>
-        <navigator class="action" url="/pages/find/index" open-type="redirect">
-            <view class="icon-cu-image" role="" aria-label="">
-                <image src="{{active.menu == 'find' ? 'https://img.icons8.com/ios/50/000000/bat-filled.png' : 'https://img.icons8.com/ios/50/000000/bat.png'}}"></image>
-            </view>
-            <view class="{{ active.menu == 'find' ?'text-blue' : 'text-gray'}}" role="" aria-label="">发现</view>
-        </navigator>
 
         <navigator class="action" url="/pages/home/index" open-type="redirect">
             <view class="icon-cu-image" role="" aria-label="">

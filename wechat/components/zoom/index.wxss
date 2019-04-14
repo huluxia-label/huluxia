@@ -25,3 +25,16 @@
   opacity: 0.9;
   z-index: -1;
 }
+.down {
+  position: fixed;
+  bottom: 40rpx;
+  left: 0;
+  width: 100vw;
+  text-align: center;
+  z-index: 9999;
+}
+.down button {
+  margin: 0 42rpx;
+  background: linear-gradient(45deg, #ec008c, #6739b6);
+  color: #fff;
+}

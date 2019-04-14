@@ -2,7 +2,8 @@ App ({
   globalData: {
     gameId: 0,
     forumId: 43,
-    postId: 0
+    postId: 0,
+    webview: ''
   },
   onLaunch () {
     // 使用自定义控件

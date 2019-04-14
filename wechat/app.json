@@ -1,14 +1,17 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/about/index",
+    "pages/home/index",
+    "pages/activity/index",
+    "pages/webview/index",
+    "pages/mm/index",
     "pages/post_info/index",
     "pages/forum/index",
     "pages/post_list/index",
     "pages/post/index",
     "pages/search_game/index",
-    "pages/game_detail/index",
-    "pages/home/index",
-    "pages/find/index"
+    "pages/game_detail/index"
   ],
   "window": {
     "navigationStyle": "custom"

@@ -78,5 +78,11 @@ Page({
       imgURL: e.currentTarget.dataset.img,
       imgStatus: true
     })
+  },
+  postInfo(e) {
+    app.globalData.postId = e.currentTarget.dataset.id
+    wx.navigateTo({
+      url: '../post_info/index'
+    });
   }
 })

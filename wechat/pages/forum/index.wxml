@@ -1,7 +1,7 @@
 <view class="content-wrap" hover-class="none" hover-stop-propagation="false">
   <include src="../../templates/topbar"></include>
   <scroll-view class="event-wrap">
-    <view class="padding-sm flex hotWrap" hover-class="none" hover-stop-propagation="false">
+    <view class="padding-sm flex hotWrap" data-id="{{hot.postID}}" bindtap="postInfo" hover-class="none" hover-stop-propagation="false">
       <view class="flex-sub bg-orange">
         <view data-img="{{hot.images.length >= 1 ? hot.images[0] : ''}}" catchtap="zoomIMG" class="hot-img radius lg shadow-blur"
           style="background-image: url('{{hot.images.length >= 1 ? hot.images[0] : ''}}')">

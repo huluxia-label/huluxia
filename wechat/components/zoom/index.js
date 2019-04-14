@@ -14,6 +14,24 @@ Component({
       this.setData({
         event: false
       })
+    },
+    down() {
+      let src = this.data.url
+          wx.downloadFile({
+            url: src,
+            success: (result) => {
+              console.log(result)
+              wx.showToast({
+                title: `下载成功\n${result}`,
+                icon: 'success',
+                duration: 1500,
+                mask: true
+              });
+            },
+            fail: () => {},
+            complete: () => {}
+          });
+        
     }
   }
 })
