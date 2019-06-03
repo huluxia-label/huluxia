@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+    <head>
+        <meta charset="UTF-8" />
+        <script>
+            var coverSupport = 'CSS' in window && typeof CSS.supports === 'function' && (CSS.supports('top: env(a)') ||
+                CSS.supports('top: constant(a)'))
+            document.write(
+                '<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0' +
+                (coverSupport ? ', viewport-fit=cover' : '') + '" />')
+        </script>
+        <title>View</title>
+        <style>
+            * {
+                -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+                -webkit-tap-highlight-color: transparent;
+            }
+
+            input[type="search"i]::-webkit-search-cancel-button {
+                display: none;
+            }
+        </style>
+        <script>
+            var __wxConfig = {"debug":false,"appname":"葫芦侠三楼","entryPagePath":"pages/forum/index.html","page":{"pages/forum/index.html":{"window":{"usingComponents":{"modal":"/components/modal"}}},"pages/index/index.html":{"window":{"usingComponents":{"modal":"/components/modal"}}},"pages/forum/detail.html":{"window":{"usingComponents":{"modal":"/components/modal","topbar":"/components/topbar"}}},"pages/forum/list.html":{"window":{"usingComponents":{"modal":"/components/modal","topbar":"/components/topbar"}}},"pages/game/search.html":{"window":{"usingComponents":{"modal":"/components/modal"}}},"pages/game/detail.html":{"window":{"usingComponents":{"modal":"/components/modal"}}},"pages/game/total.html":{"window":{"usingComponents":{"topbar":"/components/topbar"}}},"pages/zone/index.html":{"window":{"usingComponents":{}}}},"global":{"window":{"navigationStyle":"custom"}},"tabBar":{"color":"#7A7E83","selectedColor":"#3cc51f","backgroundColor":"#ffffff","borderStyle":"black","list":[{"pagePath":"pages/index/index.html","iconPath":"static/pages/index.png","selectedIconPath":"static/pages/index_sele.png","text":"首页"},{"pagePath":"pages/forum/index.html","iconPath":"static/pages/forum.png","selectedIconPath":"static/pages/forum_sele.png","text":"论坛"},{"pagePath":"pages/zone/index.html","iconPath":"static/pages/zone.png","selectedIconPath":"static/pages/zone_sele.png","text":"其他"}],"position":"bottom"},"networkTimeout":{"request":600000,"connectSocket":60000,"uploadFile":60000,"downloadFile":60000},"platform":"devtools","pages":["pages/forum/index","pages/index/index","pages/forum/detail","pages/forum/list","pages/game/search","pages/game/detail","pages/game/total","pages/zone/index"],"subPackages":[],"splashscreen":{"alwaysShowBeforeRender":true,"autoclose":false},"compilerVersion":"1.9.9","usingComponents":{}}
+        </script>
+        <script>
+            var __id__ = '';
+            window.__dispatchGenerateFunc__ = function(page) {
+                __id__ = page;
+                document.title = page;
+                // window.history.pushState('', '', page);
+                var wxss = page.replace('.html', '.wxss')
+                if (
+                    typeof __wxAppCode__ !== 'undefined' &&
+                    __wxAppCode__.hasOwnProperty(wxss)
+                ) {
+                    var setCssToHead = __wxAppCode__[wxss]
+                    typeof setCssToHead === 'function' && setCssToHead()
+                    document.dispatchEvent(new CustomEvent("generateFuncReady", {
+                        detail: {
+                            generateFunc: $gwx(page.replace('.html', '.wxml'))
+                        }
+                    }));
+                } else {
+                    plus.webview.currentWebview().setJsFile('_www/' + page.replace('.html', '.js'));
+                }
+            };
+        </script>
+        <script src="__uniappes6.js"></script>
+        <script src="uniapp://ready"></script>
+    </head>
+
+    <body>
+        <div></div>
+    </body>
+
+</html>

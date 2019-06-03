@@ -1,0 +1,1 @@
+<view bind:__l="__l"><view><view class="diy-bar shadow bg-gradual-green sm" style="padding-top:5vh;"><view class="cu-bar"><view data-event-opts="{{[['tap',[['backTo',['$event']]]]]}}" class="action" bindtap="__e"><text class="cuIcon-back"></text>返回</view><view class="content">{{''+title+''}}</view></view></view></view></view>

@@ -1,0 +1,2 @@
+setCssToHead([".",[1],"diy-in { height: 6vh; border: 1px solid #fff; border-radius: ",[0,8],"; margin-left: ",[0,40],"; margin-right: ",[0,8],"; background: #fff; padding-left: ",[0,20],"; }\n.",[1],"hit { -webkit-box-sizing: inherit; box-sizing: inherit; padding: ",[0,20]," ",[0,16],"; margin: ",[0,14],"; border: 1px solid; border-radius: ",[0,8],"; }\n",],undefined,{path:"./pages/game/search.wxss"})();
+document.dispatchEvent(new CustomEvent("generateFuncReady", { detail: { generateFunc: $gwx('./pages/game/search.wxml') } }));

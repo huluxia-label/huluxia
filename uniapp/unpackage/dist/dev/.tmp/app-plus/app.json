@@ -1,0 +1,52 @@
+{
+  "pages": [
+    "pages/forum/index",
+    "pages/index/index",
+    "pages/forum/detail",
+    "pages/forum/list",
+    "pages/game/search",
+    "pages/game/detail",
+    "pages/game/total",
+    "pages/zone/index"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationStyle": "custom"
+  },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#3cc51f",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "static/pages/index.png",
+        "selectedIconPath": "static/pages/index_sele.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/forum/index",
+        "iconPath": "static/pages/forum.png",
+        "selectedIconPath": "static/pages/forum_sele.png",
+        "text": "论坛"
+      },
+      {
+        "pagePath": "pages/zone/index",
+        "iconPath": "static/pages/zone.png",
+        "selectedIconPath": "static/pages/zone_sele.png",
+        "text": "其他"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 600000
+  },
+  "splashscreen": {
+    "alwaysShowBeforeRender": true,
+    "autoclose": false
+  },
+  "appname": "葫芦侠三楼",
+  "compilerVersion": "1.9.9",
+  "usingComponents": {}
+}

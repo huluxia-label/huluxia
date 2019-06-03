@@ -1,0 +1,24 @@
+
+.upText {
+  background: var(--orange);
+  padding: 6rpx 12rpx;
+  color: var(--white);
+  border-radius: 10rpx;
+  margin-right: 6rpx;
+}
+.content-wrap {
+  height: auto;
+}
+.v-img {
+  width: 100%;
+  padding: 10rpx;
+}
+.img-length {
+  position: absolute;
+  bottom: 18rpx;
+  right: 16rpx;
+  background: rgba(0,0,0,.5);
+  color: #fff;
+  padding: 4rpx 16rpx;
+}
+

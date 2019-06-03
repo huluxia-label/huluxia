@@ -1,0 +1,1 @@
+<view bind:__l="__l"><topbar title="Are you ok?"></topbar><view class="text-center padding-top-xl"><view class="text-xl">暂无</view></view></view>
