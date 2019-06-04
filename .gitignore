@@ -1,3 +1,4 @@
 shell/meizi
 shell/.mt.json
 *node_modules
+*unpackage

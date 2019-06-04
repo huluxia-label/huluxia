@@ -1,32 +1,68 @@
 <p align="center">
-  <img src="https://files.catbox.moe/1qais9.gif">
+  <img src="https://i.loli.net/2019/06/04/5cf5ce3fac8a347530.png">
 </p>
 
-**葫芦侠3楼app，是手机时代最大最潮的玩机社区，汇聚了百万热爱玩机的葫芦娃们，以健康积极的互联网侠客精神，彼此分享各种各样的好东西。在葫芦侠3楼app，你能找到最懂手机的大神大拿，更能找到无私分享互相帮助的好朋友！**
+<p align="center">葫芦侠三楼</p>
 
+## Tree
 
-## 三楼,江湖路漫漫~
-三楼是我最早在`15`年开始玩的,当时是我还在读初二,在当年,还没有`4G`,还没有`抖音`和`快手`,一切都是那么美好,我__莫名其妙__之下拥有了第一台手机,当时手机都还没有普及,不像现在一样,所以当时要手机纯属是为了装逼(对了✅ ,那时候还不叫装逼),炫耀.以前喜欢玩游戏(小游戏,为了迎合别人,没办法),在手机上下载了一个`神庙逃亡`,`滑雪大冒险`,`地铁跑酷`,`魂斗罗`
+```console
 
-![](https://files.catbox.moe/nt991w.jpg)
+├── API.md
+├── LICENSE
+├── README.md
+├── gh.sh
+├── gui
+├── python
+├── shell
+├── uniapp
+├── web
+└── wechat
 
-迫于穷,所以知道破解版这种东西,就去找,然后就找到了**葫芦侠修改器**,从此开始研究起了`root`,然后就开始长期游走在三楼论坛了,直到我遇到一个`黑客手册破解版`,从此在中二病的路上越走越远...
+```
 
-![](https://files.catbox.moe/cbt2kp.jpg)
+### How Developers Develop?
 
+`wechat` folder: `proxy.js` and `proxy2.js`
 
-(当年是真的非主流~)
-当年还记得有一段时间里,三楼是有[`web`](https://web.archive.org/web/20150209002836/http://bbs.huluxia.com:80/forum-43-0-0-0.html)端的,然后不知道是什么原因,然后就下线了
-![](https://ww1.sinaimg.cn/large/007i4MEmgy1fzgi9cxhmhj30t70iu41l.jpg)
-所以,就想自己写一个,调用一下它的接口
+the `nodejs` run. ex:
 
-## 版权声明
-**所有资源都是来自于网络,发生一切纠纷与本人无关,本人初衷只是为了学习,若触犯了您的个人隐私,请马上发邮箱: chenhonzhou@gmail.com 给本人,本人会立即进行删除**
+```bash
 
-- 2019/01/22 👉  **[接口分析看这里](API.md)**
+$ node proxy.js // proxy to floor.huluxia.com
+$ node proxy2.js // proxy to tools.huluxia.com
 
+```
+
+`meitui.sh` need to `jq`. if not install. ex:
+
+```bash
+
+# windows also need w&w => WSL
+$ brew install jq
+$ sudo apt install jq
+
+# run (Automatically generate folders in the current directory)
+$ chmod u+x meitui.sh && ./meitui.sh
+
+```
+
+`py` in test. dot run :(
+
+**uniapp** need IDE to Hbuilderx. Get to downloads and install :)
 
 ## TODO
+
 - [x] `API`文档
 - [x] `GUI`
 - [ ] 爬虫
+
+## Changelog
+
+- 2019/06/03 👉 `uniapp` 测试版发布
+- 2019/01/22 👉  **[接口分析看这里](API.md)**
+
+
+## 版权声明
+
+**所有资源都是来自于网络,发生一切纠纷与本人无关,本人初衷只是为了学习,若触犯了您的个人隐私,请马上发邮箱: chenhonzhou@gmail.com 给本人,本人会立即进行删除**
